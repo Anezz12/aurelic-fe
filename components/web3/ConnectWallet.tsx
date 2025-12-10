@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { useAccount, useBalance, useWatchContractEvent } from "wagmi";
+import { useAccount, useReadContract, useWatchContractEvent } from "wagmi";
 import { CONTRACT_CONFIGS } from "@/lib/contracts/addresses";
 import { formatUSDC } from "@/lib/utils/formatters";
 
@@ -10,14 +10,15 @@ export const ConnectWallet = () => {
   const { address, isConnected } = useAccount();
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  // Reactive USDC balance
+  // Get USDC balance using balanceOf
   const {
     data: usdcBalance,
     refetch: refetchBalance,
     isFetching,
-  } = useBalance({
-    address,
-    token: CONTRACT_CONFIGS.MOCK_USDC.address,
+  } = useReadContract({
+    ...CONTRACT_CONFIGS.MOCK_USDC,
+    functionName: "balanceOf",
+    args: [address as `0x${string}`],
     query: {
       enabled: !!address,
       refetchOnWindowFocus: true,
@@ -64,7 +65,7 @@ export const ConnectWallet = () => {
             style={{ fontFamily: "Space Grotesk" }}>
             {showLoading
               ? "Updating..."
-              : `${formatUSDC(usdcBalance?.value || 0)} USDC`}
+              : `${formatUSDC(usdcBalance || 0, 6)} USDC`}
           </span>
         </div>
       )}

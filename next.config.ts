@@ -1,7 +1,24 @@
 import type { NextConfig } from "next";
+import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+
+  serverExternalPackages: [
+    "@walletconnect/ethereum-provider",
+    "@base-org/account",
+    "@metamask/sdk",
+    "@safe-global/safe-apps-provider",
+    "pino",
+    "thread-stream",
+  ],
 };
 
-export default nextConfig;
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
+});
+
+export default withMDX(nextConfig);
