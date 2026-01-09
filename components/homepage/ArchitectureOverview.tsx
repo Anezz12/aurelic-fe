@@ -59,7 +59,7 @@ export default function ArchitectureOverview() {
       icon: Zap,
       description: "Whitelisted protocol execution",
       components: [
-        "Uniswap V3 Integration",
+        "Velodrome Integration",
         "Token Whitelist",
         "Swap Execution",
         "Slippage Protection",

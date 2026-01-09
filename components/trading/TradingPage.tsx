@@ -241,7 +241,7 @@ export const TradingPage: React.FC = () => {
         {/* Header */}
         <div className="mb-4">
           <h1 className="text-2xl font-bold text-white mb-2">
-            Uniswap Trading
+            DEX Trading
           </h1>
           <p className="text-gray-400 text-sm">
             Trade tokens with{" "}

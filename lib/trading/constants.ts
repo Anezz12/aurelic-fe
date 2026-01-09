@@ -37,42 +37,6 @@ export const TOKENS: Record<string, Token> = {
   },
 };
 
-// Uniswap V4 Router (Lisk Sepolia) - imported from contracts.ts
-export const UNISWAP_V4_ROUTER = CONTRACT_CONFIGS.UNIVERSAL_ROUTER.address;
-
-// Fee tiers for Uniswap V4 pools (Lisk Sepolia)
-export const FEE_TIERS = {
-  LOW: 500, // 0.05%
-  MEDIUM: 3000, // 0.3%
-  HIGH: 10000, // 1%
-} as const;
-
-// V4 Pool Configuration (imported from contracts.ts)
-// Only pools with deployed tokens: USDC, ETH, BTC
-export const V4_POOLS = {
-  USDC_ETH: {
-    poolId: CONTRACT_CONFIGS.POOL_IDS.USDC_ETH,
-    currency0: CONTRACT_CONFIGS.MOCK_ETH.address, // ETH
-    currency1: CONTRACT_CONFIGS.MOCK_USDC.address, // USDC
-    fee: 3000,
-    tickSpacing: 60,
-  },
-  USDC_BTC: {
-    poolId: CONTRACT_CONFIGS.POOL_IDS.USDC_BTC,
-    currency0: CONTRACT_CONFIGS.MOCK_USDC.address, // USDC
-    currency1: CONTRACT_CONFIGS.MOCK_BTC.address, // BTC
-    fee: 3000,
-    tickSpacing: 60,
-  },
-  ETH_BTC: {
-    poolId: CONTRACT_CONFIGS.POOL_IDS.ETH_BTC,
-    currency0: CONTRACT_CONFIGS.MOCK_ETH.address, // ETH
-    currency1: CONTRACT_CONFIGS.MOCK_BTC.address, // BTC
-    fee: 3000,
-    tickSpacing: 60,
-  },
-} as const;
-
 // Default slippage options
 export const SLIPPAGE_OPTIONS = ["0.1", "0.5", "1.0", "2.0"];
 

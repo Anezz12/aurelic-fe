@@ -1,5 +1,5 @@
 import { parseUnits, formatUnits } from "viem";
-import { TOKENS, TRADING_CONFIG, FEE_TIERS } from "./constants";
+import { TOKENS, TRADING_CONFIG } from "./constants";
 import type { Token } from "./constants";
 
 /**
@@ -167,27 +167,6 @@ export function calculateDeadline(
   minutesFromNow: number = TRADING_CONFIG.DEFAULT_DEADLINE_MINUTES
 ): number {
   return Math.floor(Date.now() / 1000) + minutesFromNow * 60;
-}
-
-/**
- * Get recommended fee tier based on token pair
- */
-export function getRecommendedFeeTier(
-  tokenIn: Token,
-  tokenOut: Token
-): keyof typeof FEE_TIERS {
-  // LSK pairs might have lower liquidity, use higher fee tier
-  if (tokenIn.symbol === "LSK" || tokenOut.symbol === "LSK") {
-    return "HIGH";
-  }
-
-  // Stable pairs (USDC involved) can use lower fees
-  if (tokenIn.symbol === "USDC" || tokenOut.symbol === "USDC") {
-    return "MEDIUM";
-  }
-
-  // Default to medium fee tier
-  return "MEDIUM";
 }
 
 /**
