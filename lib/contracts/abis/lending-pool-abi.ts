@@ -608,4 +608,4 @@ export const LENDING_POOL_ABI = [
 ] as const;
 
 export const LENDING_POOL_ADDRESS =
-  "0x3acFeeDAea433fc47f9000c3c1eb6F486dd58717";
+  "0xc0d14dE4514696544d5a415ED4aB72A3c60EFFf3";

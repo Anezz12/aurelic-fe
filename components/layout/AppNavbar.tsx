@@ -29,7 +29,7 @@ export default function AppNavbar() {
   return (
     <>
       <nav
-        className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A] border-b border-[rgba(6,182,212,0.15)]"
+        className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A] border-b border-[rgba(245,200,16,0.15)]"
         role="navigation"
         aria-label="Application navigation">
         <div className="px-6 sm:px-8 lg:px-12">
@@ -39,16 +39,16 @@ export default function AppNavbar() {
               <div
                 className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-105"
                 style={{
-                  background: "rgba(6, 182, 212, 0.1)",
-                  border: "1px solid rgba(6, 182, 212, 0.2)",
+                  background: "rgba(245, 200, 16, 0.1)",
+                  border: "1px solid rgba(245, 200, 16, 0.2)",
                 }}>
                 <div
                   className="w-5 h-5 rounded-sm transition-all duration-300 group-hover:scale-110"
-                  style={{ background: "#06B6D4" }}
+                  style={{ background: "#F5C810" }}
                 />
               </div>
               <span
-                className="text-2xl font-normal tracking-[-0.5px] transition-colors duration-300 group-hover:text-[#06B6D4]"
+                className="text-2xl font-normal tracking-[-0.5px] transition-colors duration-300 group-hover:text-[#F5C810]"
                 style={{
                   color: "#FFFFFF",
                   fontFamily: "Space Grotesk",
@@ -69,7 +69,7 @@ export default function AppNavbar() {
                     href={item.href ?? "#"}
                     className={`relative flex items-center gap-2 px-4 py-2.5 rounded-lg transition-all duration-300 group ${
                       active
-                        ? "text-[#06B6D4]"
+                        ? "text-[#F5C810]"
                         : "text-[#A3A3A3] hover:text-white"
                     }`}
                     style={{ fontFamily: "Space Grotesk" }}
@@ -78,7 +78,7 @@ export default function AppNavbar() {
                     <Icon
                       className={`w-4 h-4 transition-all duration-300 ${
                         active
-                          ? "text-[#06B6D4]"
+                          ? "text-[#F5C810]"
                           : "text-[#A3A3A3] group-hover:text-white"
                       }`}
                       aria-hidden={true}
@@ -91,7 +91,7 @@ export default function AppNavbar() {
                     {active && (
                       <div
                         className="absolute inset-0 rounded-lg border transition-all duration-300"
-                        style={{ borderColor: "rgba(6, 182, 212, 0.15)" }}
+                        style={{ borderColor: "rgba(245, 200, 16, 0.15)" }}
                       />
                     )}
                   </Link>
@@ -108,7 +108,7 @@ export default function AppNavbar() {
 
               {/* Mobile Menu Button */}
               <button
-                className="lg:hidden w-6 h-6 transition-colors duration-300 hover:text-[#06B6D4]"
+                className="lg:hidden w-6 h-6 transition-colors duration-300 hover:text-[#F5C810]"
                 style={{ color: "#FFFFFF" }}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label={
@@ -130,7 +130,7 @@ export default function AppNavbar() {
         {isMobileMenuOpen && (
           <div
             id="mobile-menu"
-            className="lg:hidden absolute top-full left-0 right-0 bg-[#0A0A0A] border-b border-[rgba(6,182,212,0.15)]"
+            className="lg:hidden absolute top-full left-0 right-0 bg-[#0A0A0A] border-b border-[rgba(245,200,16,0.15)]"
             role="menu"
             aria-label="Mobile navigation menu">
             <div className="px-6 sm:px-8 py-4 space-y-3">
@@ -145,7 +145,7 @@ export default function AppNavbar() {
                     href={item.href ?? "#"}
                     className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-300 group ${
                       active
-                        ? "text-[#06B6D4] bg-[#1E1E1E]"
+                        ? "text-[#F5C810] bg-[#1E1E1E]"
                         : "text-[#A3A3A3] hover:text-white hover:bg-[#1E1E1E]"
                     }`}
                     style={{ fontFamily: "Space Grotesk" }}
@@ -155,7 +155,7 @@ export default function AppNavbar() {
                     <Icon
                       className={`w-4 h-4 transition-all duration-300 ${
                         active
-                          ? "text-[#06B6D4]"
+                          ? "text-[#F5C810]"
                           : "text-[#A3A3A3] group-hover:text-white"
                       }`}
                       aria-hidden={true}
@@ -168,7 +168,7 @@ export default function AppNavbar() {
                     </div>
                     {active && (
                       <ArrowRight
-                        className="w-4 h-4 ml-auto text-[#06B6D4]"
+                        className="w-4 h-4 ml-auto text-[#F5C810]"
                         aria-hidden={true}
                       />
                     )}
@@ -177,7 +177,7 @@ export default function AppNavbar() {
               })}
 
               {/* Mobile Connect Wallet */}
-              <div className="pt-4 border-t border-[rgba(6,182,212,0.15)]">
+              <div className="pt-4 border-t border-[rgba(245,200,16,0.15)]">
                 <ConnectWallet />
               </div>
             </div>
@@ -188,7 +188,7 @@ export default function AppNavbar() {
       {/* Skip to main content */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#06B6D4] focus:text-[#0A0A0A] focus:rounded-lg focus:font-normal"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#F5C810] focus:text-[#0A0A0A] focus:rounded-lg focus:font-normal"
         style={{ fontFamily: "Space Grotesk" }}>
         Skip to main content
       </a>

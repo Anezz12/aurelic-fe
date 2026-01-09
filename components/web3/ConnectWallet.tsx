@@ -59,9 +59,9 @@ export const ConnectWallet = () => {
   return (
     <div className="flex items-center gap-3">
       {isConnected && address && (
-        <div className="bg-[#1E1E1E] px-3 py-1.5 rounded-lg border border-[rgba(6,182,212,0.15)]">
+        <div className="bg-[#1E1E1E] px-3 py-1.5 rounded-lg border border-[rgba(245,200,16,0.15)]">
           <span
-            className="text-[#06B6D4] font-normal text-sm"
+            className="text-[#F5C810] font-normal text-sm"
             style={{ fontFamily: "Space Grotesk" }}>
             {showLoading
               ? "Updating..."

@@ -49,7 +49,7 @@ export const TokenBalanceCard: React.FC<TokenBalanceCardProps> = ({
       className={`bg-[#1E1E1E] rounded-lg p-4 border transition-colors ${
         isZeroBalance
           ? "border-[rgba(163,163,163,0.1)] opacity-60"
-          : "border-[rgba(6,182,212,0.15)] hover:border-[rgba(6,182,212,0.3)]"
+          : "border-[rgba(245,200,16,0.15)] hover:border-[rgba(245,200,16,0.3)]"
       }`}>
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-3">
@@ -73,7 +73,7 @@ export const TokenBalanceCard: React.FC<TokenBalanceCardProps> = ({
         <div className="text-right">
           <p
             className={`text-xl font-normal ${
-              isZeroBalance ? "text-[#A3A3A3]" : "text-[#06B6D4]"
+              isZeroBalance ? "text-[#A3A3A3]" : "text-[#F5C810]"
             }`}
             style={{
               fontFamily: "Space Grotesk",

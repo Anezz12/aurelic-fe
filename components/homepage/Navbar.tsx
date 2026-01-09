@@ -40,7 +40,7 @@ export default function Navbar() {
         <div
           className={`transition-all duration-400 ease-in-out ${
             isScrolled
-              ? "bg-[#0A0A0A]/90 backdrop-blur-[24px] shadow-[0_8px_40px_rgba(6,182,212,0.15)] rounded-2xl h-[72px]"
+              ? "bg-[#0A0A0A]/90 backdrop-blur-[24px] shadow-[0_8px_40px_rgba(245,200,16,0.15)] rounded-2xl h-[72px]"
               : "bg-transparent backdrop-blur-0 shadow-none rounded-none h-[88px]"
           }`}
           style={{
@@ -58,15 +58,15 @@ export default function Navbar() {
               <div
                 className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-105"
                 style={{
-                  background: "rgba(6, 182, 212, 0.1)",
-                  border: "1px solid rgba(6, 182, 212, 0.2)",
+                  background: "rgba(245, 200, 16, 0.1)",
+                  border: "1px solid rgba(245, 200, 16, 0.2)",
                 }}>
                 <div
                   className="w-5 h-5 rounded-sm transition-all duration-300 group-hover:scale-110"
-                  style={{ background: "#06B6D4" }}></div>
+                  style={{ background: "#F5C810" }}></div>
               </div>
               <span
-                className="text-xl font-normal tracking-[-0.02em] transition-colors duration-300 group-hover:text-[#06B6D4]"
+                className="text-xl font-normal tracking-[-0.02em] transition-colors duration-300 group-hover:text-[#F5C810]"
                 style={{ color: "#FFFFFF" }}>
                 Aurelic
               </span>
@@ -81,7 +81,7 @@ export default function Navbar() {
                   className="transition-colors duration-300 text-base hover:opacity-80"
                   style={{ color: "#A3A3A3" }}
                   onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "#06B6D4")
+                    (e.currentTarget.style.color = "#F5C810")
                   }
                   onMouseLeave={(e) =>
                     (e.currentTarget.style.color = "#A3A3A3")
@@ -99,19 +99,19 @@ export default function Navbar() {
                 href="/app"
                 className="flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-300 group"
                 style={{
-                  background: "#06B6D4",
+                  background: "#F5C810",
                   color: "#0A0A0A",
-                  border: "1px solid #06B6D4",
+                  border: "1px solid #F5C810",
                   fontSize: "14px",
                   fontWeight: "400",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = "transparent";
-                  e.currentTarget.style.color = "#06B6D4";
+                  e.currentTarget.style.color = "#F5C810";
                   e.currentTarget.style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "#06B6D4";
+                  e.currentTarget.style.background = "#F5C810";
                   e.currentTarget.style.color = "#0A0A0A";
                   e.currentTarget.style.transform = "translateY(0)";
                 }}
@@ -157,7 +157,7 @@ export default function Navbar() {
               style={{
                 background: "rgba(10, 10, 10, 0.95)",
                 backdropFilter: "blur(24px)",
-                boxShadow: "0 8px 40px rgba(6, 182, 212, 0.15)",
+                boxShadow: "0 8px 40px rgba(245, 200, 16, 0.15)",
               }}>
               <div className="container py-6 space-y-6">
                 {navLinks.map((link) => (
@@ -167,7 +167,7 @@ export default function Navbar() {
                     className="block transition-colors duration-300 text-base hover:opacity-80"
                     style={{ color: "#A3A3A3" }}
                     onMouseEnter={(e) =>
-                      (e.currentTarget.style.color = "#06B6D4")
+                      (e.currentTarget.style.color = "#F5C810")
                     }
                     onMouseLeave={(e) =>
                       (e.currentTarget.style.color = "#A3A3A3")
@@ -182,18 +182,18 @@ export default function Navbar() {
                   href="/app"
                   className="flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-300 group w-full justify-center"
                   style={{
-                    background: "#06B6D4",
+                    background: "#F5C810",
                     color: "#0A0A0A",
-                    border: "1px solid #06B6D4",
+                    border: "1px solid #F5C810",
                     fontSize: "14px",
                     fontWeight: "400",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.background = "transparent";
-                    e.currentTarget.style.color = "#06B6D4";
+                    e.currentTarget.style.color = "#F5C810";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "#06B6D4";
+                    e.currentTarget.style.background = "#F5C810";
                     e.currentTarget.style.color = "#0A0A0A";
                   }}
                   aria-label="Launch Aurelic application">

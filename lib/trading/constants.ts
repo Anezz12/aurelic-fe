@@ -1,4 +1,4 @@
-// Trading constants and token configurations for Base Sepolia network
+// Trading constants and token configurations for Lisk Sepolia network
 import { CONTRACT_CONFIGS } from "@/lib/contracts/addresses";
 
 export interface Token {
@@ -11,7 +11,7 @@ export interface Token {
   isNative?: boolean;
 }
 
-// Base Sepolia Token Addresses (imported from contracts.ts)
+// Lisk Sepolia Token Addresses (imported from contracts.ts)
 // Only deployed tokens: Mock USDC, Mock ETH, Mock BTC
 export const TOKENS: Record<string, Token> = {
   USDC: {
@@ -37,10 +37,10 @@ export const TOKENS: Record<string, Token> = {
   },
 };
 
-// Uniswap V4 Router (Base Sepolia) - imported from contracts.ts
+// Uniswap V4 Router (Lisk Sepolia) - imported from contracts.ts
 export const UNISWAP_V4_ROUTER = CONTRACT_CONFIGS.UNIVERSAL_ROUTER.address;
 
-// Fee tiers for Uniswap V4 pools (Base Sepolia)
+// Fee tiers for Uniswap V4 pools (Lisk Sepolia)
 export const FEE_TIERS = {
   LOW: 500, // 0.05%
   MEDIUM: 3000, // 0.3%

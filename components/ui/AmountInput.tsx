@@ -58,16 +58,16 @@ export const AmountInput = ({
   };
 
   const inputClasses = `
-    w-full bg-[#1E1E1E] border border-[rgba(6,182,212,0.15)] rounded-lg px-4 py-3 text-white placeholder-[#A3A3A3]
-    focus:outline-none focus:border-[#06B6D4]
+    w-full bg-[#1E1E1E] border border-[rgba(245,200,16,0.15)] rounded-lg px-4 py-3 text-white placeholder-[#A3A3A3]
+    focus:outline-none focus:border-[#F5C810]
     disabled:opacity-50 disabled:cursor-not-allowed
     transition-all duration-200
     ${
       error
         ? "border-red-500"
         : isFocused
-        ? "border-[#06B6D4]"
-        : "border-[rgba(6,182,212,0.15)]"
+        ? "border-[#F5C810]"
+        : "border-[rgba(245,200,16,0.15)]"
     }
     ${className}
   `;
@@ -85,7 +85,7 @@ export const AmountInput = ({
             type="button"
             onClick={handleMaxClick}
             disabled={disabled}
-            className="text-sm text-[#06B6D4] hover:text-[#06B6D4]/80 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-normal"
+            className="text-sm text-[#F5C810] hover:text-[#F5C810]/80 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-normal"
             style={{ fontFamily: "Space Grotesk" }}>
             {maxLabel}: {formatUSDC(maxValue)} USDC
           </button>

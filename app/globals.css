@@ -18,9 +18,9 @@ section[id] {
   --bg-tertiary: #1e1e1e; /* Inputs, hover */
 
   /* Accent & Interactive */
-  --accent: #06b6d4; /* CTAs, links - Use sparingly */
-  --accent-hover: #22d3ee; /* Hover state */
-  --accent-dark: #0891b2; /* Active state */
+  --accent: #f5c810; /* CTAs, links - Use sparingly */
+  --accent-hover: #f7d63e; /* Hover state */
+  --accent-dark: #d4aa0a; /* Active state */
 
   /* Text */
   --text-primary: #ffffff; /* Headings */
@@ -28,9 +28,9 @@ section[id] {
   --text-tertiary: #737373; /* Captions, metadata */
 
   /* Borders & Dividers - UI Style Guide Compliant */
-  --border: rgba(6, 182, 212, 0.15); /* Default border */
-  --border-hover: rgba(6, 182, 212, 0.3); /* Hover state */
-  --border-active: rgba(6, 182, 212, 0.5); /* Active state */
+  --border: rgba(245, 200, 16, 0.15); /* Default border */
+  --border-hover: rgba(245, 200, 16, 0.3); /* Hover state */
+  --border-active: rgba(245, 200, 16, 0.5); /* Active state */
   --border-subtle: rgba(255, 255, 255, 0.05);
 
   /* Spacing Scale - 8px Multiplier System */
@@ -417,10 +417,10 @@ input::placeholder {
 @keyframes glow {
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+    box-shadow: 0 0 20px rgba(245, 200, 16, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(6, 182, 212, 0.6);
+    box-shadow: 0 0 40px rgba(245, 200, 16, 0.6);
   }
 }
 
@@ -535,12 +535,12 @@ input::placeholder {
   100% {
     opacity: 0.3;
     transform: scale3d(1, 1, 1);
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+    box-shadow: 0 0 20px rgba(245, 200, 16, 0.2);
   }
   50% {
     opacity: 0.8;
     transform: scale3d(1.05, 1.05, 1);
-    box-shadow: 0 0 40px rgba(6, 182, 212, 0.4);
+    box-shadow: 0 0 40px rgba(245, 200, 16, 0.4);
   }
 }
 
@@ -570,7 +570,7 @@ input::placeholder {
 
 /* Gradient text animation */
 .gradient-text {
-  background: linear-gradient(45deg, #06b6d4, #22d3ee, #67e8f9, #06b6d4);
+  background: linear-gradient(45deg, #f5c810, #f7d63e, #ffe066, #f5c810);
   background-size: 300% 300%;
   animation: gradientShift 3s ease infinite;
   -webkit-background-clip: text;
@@ -612,7 +612,7 @@ input::placeholder {
 /* Enhanced button hover effects */
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
+  box-shadow: 0 10px 30px rgba(245, 200, 16, 0.4);
 }
 
 .btn-secondary:hover {
@@ -676,10 +676,10 @@ input::placeholder {
 @keyframes featureGlow {
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+    box-shadow: 0 0 20px rgba(245, 200, 16, 0.2);
   }
   50% {
-    box-shadow: 0 0 40px rgba(6, 182, 212, 0.4);
+    box-shadow: 0 0 40px rgba(245, 200, 16, 0.4);
   }
 }
 
@@ -713,15 +713,15 @@ input::placeholder {
 @keyframes stepActivate {
   0% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.4);
+    box-shadow: 0 0 0 0 rgba(245, 200, 16, 0.4);
   }
   50% {
     transform: scale(1.1);
-    box-shadow: 0 0 0 20px rgba(6, 182, 212, 0);
+    box-shadow: 0 0 0 20px rgba(245, 200, 16, 0);
   }
   100% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(6, 182, 212, 0);
+    box-shadow: 0 0 0 0 rgba(245, 200, 16, 0);
   }
 }
 
@@ -899,7 +899,7 @@ a:focus {
 
 /* Button Focus */
 .btn:focus-visible {
-  box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.3);
+  box-shadow: 0 0 0 4px rgba(245, 200, 16, 0.3);
 }
 
 /* Link Focus */
@@ -929,7 +929,7 @@ a:focus-visible {
 /* High Contrast Mode Support */
 @media (prefers-contrast: high) {
   :root {
-    --border: rgba(6, 182, 212, 0.3);
+    --border: rgba(245, 200, 16, 0.3);
     --border-subtle: rgba(255, 255, 255, 0.1);
   }
 
@@ -1072,18 +1072,18 @@ body {
 
 /* Remove custom teal classes and heavy shadow/glow utilities to enforce flat style */
 
-/* RainbowKit ConnectButton Custom Styling - Cyan Theme */
+/* RainbowKit ConnectButton Custom Styling - Yellow/Gold Theme */
 [data-rk] {
   --rk-colors-connectButtonBackground: #1e1e1e;
   --rk-colors-connectButtonBackgroundHover: #2a2a2a;
-  --rk-colors-connectButtonText: #06b6d4;
-  --rk-colors-connectButtonTextHover: #22d3ee;
-  --rk-colors-connectButtonBorder: rgba(6, 182, 212, 0.15);
-  --rk-colors-connectButtonBorderHover: rgba(6, 182, 212, 0.3);
+  --rk-colors-connectButtonText: #f5c810;
+  --rk-colors-connectButtonTextHover: #f7d63e;
+  --rk-colors-connectButtonBorder: rgba(245, 200, 16, 0.15);
+  --rk-colors-connectButtonBorderHover: rgba(245, 200, 16, 0.3);
   --rk-colors-connectButtonInnerBackground: transparent;
-  --rk-colors-connectButtonInnerBackgroundHover: rgba(6, 182, 212, 0.05);
+  --rk-colors-connectButtonInnerBackgroundHover: rgba(245, 200, 16, 0.05);
   --rk-colors-connectButtonTextError: #ef4444;
-  --rk-colors-connectButtonTextSuccess: #06b6d4;
+  --rk-colors-connectButtonTextSuccess: #f5c810;
   --rk-colors-connectButtonTextSecondary: #a3a3a3;
   --rk-colors-connectButtonTextSecondaryHover: #ffffff;
   --rk-colors-connectButtonTextTertiary: #737373;
@@ -1139,8 +1139,8 @@ body {
 /* Override RainbowKit button styles */
 [data-rk] button[data-testid="rk-connect-button"] {
   background: #1e1e1e !important;
-  border: 1px solid rgba(6, 182, 212, 0.15) !important;
-  color: #06b6d4 !important;
+  border: 1px solid rgba(245, 200, 16, 0.15) !important;
+  color: #f5c810 !important;
   font-family: "Space Grotesk", sans-serif !important;
   font-weight: 400 !important;
   border-radius: 8px !important;
@@ -1150,8 +1150,8 @@ body {
 
 [data-rk] button[data-testid="rk-connect-button"]:hover {
   background: #2a2a2a !important;
-  border-color: rgba(6, 182, 212, 0.3) !important;
-  color: #22d3ee !important;
+  border-color: rgba(245, 200, 16, 0.3) !important;
+  color: #f7d63e !important;
   transform: translateY(-1px) !important;
 }
 
@@ -1162,8 +1162,8 @@ body {
 /* Account button styling */
 [data-rk] button[data-testid="rk-account-button"] {
   background: #1e1e1e !important;
-  border: 1px solid rgba(6, 182, 212, 0.15) !important;
-  color: #06b6d4 !important;
+  border: 1px solid rgba(245, 200, 16, 0.15) !important;
+  color: #f5c810 !important;
   font-family: "Space Grotesk", sans-serif !important;
   font-weight: 400 !important;
   border-radius: 8px !important;
@@ -1173,7 +1173,7 @@ body {
 
 [data-rk] button[data-testid="rk-account-button"]:hover {
   background: #2a2a2a !important;
-  border-color: rgba(6, 182, 212, 0.3) !important;
-  color: #22d3ee !important;
+  border-color: rgba(245, 200, 16, 0.3) !important;
+  color: #f7d63e !important;
   transform: translateY(-1px) !important;
 }

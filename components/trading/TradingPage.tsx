@@ -270,11 +270,11 @@ export const TradingPage: React.FC = () => {
             </div>
           ) : restrictedWalletAddress && hasActiveLoan ? (
             <div className="space-y-3">
-              <div className="bg-[#0A0A0A] rounded-lg border border-[rgba(6,182,212,0.15)] p-4">
+              <div className="bg-[#0A0A0A] rounded-lg border border-[rgba(245,200,16,0.15)] p-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-[#06B6D4]/20 rounded-full flex items-center justify-center">
+                  <div className="w-8 h-8 bg-[#F5C810]/20 rounded-full flex items-center justify-center">
                     <svg
-                      className="w-4 h-4 text-[#06B6D4]"
+                      className="w-4 h-4 text-[#F5C810]"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24">
@@ -288,7 +288,7 @@ export const TradingPage: React.FC = () => {
                   </div>
                   <div>
                     <p
-                      className="text-[#06B6D4] font-normal"
+                      className="text-[#F5C810] font-normal"
                       style={{ fontFamily: "Space Grotesk" }}>
                       Trading Wallet Active
                     </p>
@@ -383,7 +383,7 @@ export const TradingPage: React.FC = () => {
               )}
             </div>
           ) : hasActiveLoan && !restrictedWalletAddress ? (
-            <div className="bg-[#0A0A0A] rounded-lg border border-[rgba(6,182,212,0.15)] p-4">
+            <div className="bg-[#0A0A0A] rounded-lg border border-[rgba(245,200,16,0.15)] p-4">
               <div className="flex items-center space-x-3">
                 <div className="w-5 h-5 border-2 border-orange-400 border-t-transparent rounded-full animate-spin"></div>
                 <div>
@@ -401,7 +401,7 @@ export const TradingPage: React.FC = () => {
               </div>
             </div>
           ) : (
-            <div className="bg-[#0A0A0A] rounded-lg border border-[rgba(6,182,212,0.15)] p-4">
+            <div className="bg-[#0A0A0A] rounded-lg border border-[rgba(245,200,16,0.15)] p-4">
               <div className="text-center">
                 <div className="w-10 h-10 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
                   <svg
@@ -451,7 +451,7 @@ export const TradingPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {/* Trading Form */}
           <div className="lg:col-span-2">
-            <div className="bg-[#0A0A0A] rounded-lg border border-[rgba(6,182,212,0.15)] p-5">
+            <div className="bg-[#0A0A0A] rounded-lg border border-[rgba(245,200,16,0.15)] p-5">
               {/* Trade Type Toggle */}
               {/* <div className="flex justify-between items-center mb-5">
                 <h2 className="text-xl font-semibold text-white">Trade Tokens</h2>

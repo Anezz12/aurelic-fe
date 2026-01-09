@@ -8,7 +8,7 @@ export default function CTASection() {
   const { ref, isVisible } = useScrollAnimation();
 
   const features = [
-    "Live on Base Sepolia",
+    "Live on Lisk Sepolia",
     "Open Source",
     "Community Governed",
   ];

@@ -58,7 +58,7 @@ export const StatusCard = ({
 
   return (
     <div
-      className={`bg-[#1E1E1E] rounded-lg border border-[rgba(6,182,212,0.15)] p-4 ${className}`}>
+      className={`bg-[#1E1E1E] rounded-lg border border-[rgba(245,200,16,0.15)] p-4 ${className}`}>
       <div className="flex items-center justify-between mb-3">
         <h4
           className="text-sm font-normal text-white"
@@ -92,7 +92,7 @@ export const StatusItem = ({
       </span>
       <span
         className={`text-sm font-normal ${
-          highlight ? "text-[#06B6D4]" : "text-white"
+          highlight ? "text-[#F5C810]" : "text-white"
         }`}
         style={{ fontFamily: "Space Grotesk" }}>
         {value}

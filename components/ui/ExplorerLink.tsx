@@ -19,9 +19,9 @@ export const ExplorerLink = ({
   showIcon = true,
 }: ExplorerLinkProps) => {
   const url = hash
-    ? getTransactionUrl(hash, SUPPORTED_CHAINS.BASE_SEPOLIA)
+    ? getTransactionUrl(hash, SUPPORTED_CHAINS.LISK_SEPOLIA)
     : address
-    ? getAddressUrl(address, SUPPORTED_CHAINS.BASE_SEPOLIA)
+    ? getAddressUrl(address, SUPPORTED_CHAINS.LISK_SEPOLIA)
     : "";
 
   if (!url) return null;
@@ -33,7 +33,7 @@ export const ExplorerLink = ({
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center gap-1 text-[#06B6D4] hover:text-[#06B6D4]/80 transition-colors text-sm font-normal ${className}`}
+      className={`inline-flex items-center gap-1 text-[#F5C810] hover:text-[#F5C810]/80 transition-colors text-sm font-normal ${className}`}
       style={{ fontFamily: "Space Grotesk" }}>
       {children || defaultText}
       {showIcon && (

@@ -8,7 +8,7 @@ export const PoolStats = () => {
 
   if (isLoading) {
     return (
-      <div className="bg-[#1E1E1E] rounded-lg p-6 border border-[rgba(6,182,212,0.15)]">
+      <div className="bg-[#1E1E1E] rounded-lg p-6 border border-[rgba(245,200,16,0.15)]">
         <div className="flex items-center justify-center">
           <LoadingSpinner size="lg" />
           <span
@@ -23,7 +23,7 @@ export const PoolStats = () => {
 
   if (!poolStats) {
     return (
-      <div className="bg-[#1E1E1E] rounded-lg p-6 border border-[rgba(6,182,212,0.15)]">
+      <div className="bg-[#1E1E1E] rounded-lg p-6 border border-[rgba(245,200,16,0.15)]">
         <div
           className="text-center text-[#A3A3A3] font-normal"
           style={{ fontFamily: "Space Grotesk" }}>
@@ -78,8 +78,8 @@ export const PoolStats = () => {
             key={index}
             className={`rounded-lg p-4 border transition-all duration-300 ${
               stat.highlight
-                ? "bg-[#06B6D4]/10 border-[#06B6D4]/30 hover:border-[#06B6D4]/50"
-                : "bg-[#1E1E1E] border-[rgba(6,182,212,0.15)] hover:border-[rgba(6,182,212,0.3)]"
+                ? "bg-[#F5C810]/10 border-[#F5C810]/30 hover:border-[#F5C810]/50"
+                : "bg-[#1E1E1E] border-[rgba(245,200,16,0.15)] hover:border-[rgba(245,200,16,0.3)]"
             }`}>
             <div className="space-y-2">
               <div
@@ -90,7 +90,7 @@ export const PoolStats = () => {
               <div className="flex items-baseline gap-1">
                 <span
                   className={`text-xl font-normal ${
-                    stat.highlight ? "text-[#06B6D4]" : "text-white"
+                    stat.highlight ? "text-[#F5C810]" : "text-white"
                   }`}
                   style={{
                     fontFamily: "Space Grotesk",
@@ -117,7 +117,7 @@ export const PoolStats = () => {
       </div>
 
       {/* Pool Status */}
-      <div className="bg-[#1E1E1E] rounded-lg p-4 border border-[rgba(6,182,212,0.15)]">
+      <div className="bg-[#1E1E1E] rounded-lg p-4 border border-[rgba(245,200,16,0.15)]">
         <div className="flex items-center justify-between">
           <div>
             <h3
@@ -139,7 +139,7 @@ export const PoolStats = () => {
           <div
             className={`px-3 py-1 rounded-full text-sm font-normal ${
               Number(poolStats.availableLiquidity) > 0
-                ? "bg-[#06B6D4]/20 text-[#06B6D4]"
+                ? "bg-[#F5C810]/20 text-[#F5C810]"
                 : "bg-red-400/20 text-red-400"
             }`}
             style={{ fontFamily: "Space Grotesk" }}>

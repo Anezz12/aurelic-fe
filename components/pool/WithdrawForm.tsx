@@ -48,7 +48,7 @@ export const WithdrawForm = () => {
   };
 
   return (
-    <div className="bg-[#0A0A0A] rounded-lg p-6 border border-[rgba(6,182,212,0.15)]">
+    <div className="bg-[#0A0A0A] rounded-lg p-6 border border-[rgba(245,200,16,0.15)]">
       <div className="space-y-6">
         {/* Header */}
         <div>
@@ -85,7 +85,7 @@ export const WithdrawForm = () => {
             />
           </StatusCard>
         ) : (
-          <div className="bg-[#1E1E1E] rounded-lg p-6 text-center border border-[rgba(6,182,212,0.15)]">
+          <div className="bg-[#1E1E1E] rounded-lg p-6 text-center border border-[rgba(245,200,16,0.15)]">
             <div className="text-[#A3A3A3] mb-2">
               <svg
                 className="w-12 h-12 mx-auto mb-4 opacity-50"
@@ -134,7 +134,7 @@ export const WithdrawForm = () => {
               <span>Available: {tokenBalance} USDC</span>
               <button
                 onClick={() => setAmount(tokenBalance)}
-                className="text-[#06B6D4] hover:text-[#0891B2] transition-colors"
+                className="text-[#F5C810] hover:text-[#0891B2] transition-colors"
                 style={{ fontFamily: "Space Grotesk" }}>
                 Max
               </button>
