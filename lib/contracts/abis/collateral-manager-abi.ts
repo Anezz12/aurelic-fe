@@ -1,4 +1,6 @@
 // Auto-generated ABI for CollateralManager
+// Generated at: 2026-01-10T04:05:28.030Z
+// Source: CollateralManager.sol/CollateralManager.json
 
 export const COLLATERAL_MANAGER_ABI = [
   {
@@ -7,10 +9,10 @@ export const COLLATERAL_MANAGER_ABI = [
       {
         name: "_loanManager",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "nonpayable"
   },
   {
     type: "function",
@@ -20,10 +22,10 @@ export const COLLATERAL_MANAGER_ABI = [
       {
         name: "",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -33,10 +35,10 @@ export const COLLATERAL_MANAGER_ABI = [
       {
         name: "",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -46,10 +48,10 @@ export const COLLATERAL_MANAGER_ABI = [
       {
         name: "",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -58,21 +60,21 @@ export const COLLATERAL_MANAGER_ABI = [
       {
         name: "borrower",
         type: "address",
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "marginAmount",
         type: "uint256",
-        internalType: "uint256",
+        internalType: "uint256"
       },
       {
         name: "loanAmount",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
     outputs: [],
-    stateMutability: "nonpayable",
+    stateMutability: "nonpayable"
   },
   {
     type: "function",
@@ -81,8 +83,8 @@ export const COLLATERAL_MANAGER_ABI = [
       {
         name: "borrower",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
     outputs: [
       {
@@ -93,27 +95,27 @@ export const COLLATERAL_MANAGER_ABI = [
           {
             name: "marginAmount",
             type: "uint256",
-            internalType: "uint256",
+            internalType: "uint256"
           },
           {
             name: "loanAmount",
             type: "uint256",
-            internalType: "uint256",
+            internalType: "uint256"
           },
           {
             name: "startTime",
             type: "uint32",
-            internalType: "uint32",
+            internalType: "uint32"
           },
           {
             name: "isActive",
             type: "bool",
-            internalType: "bool",
-          },
-        ],
-      },
+            internalType: "bool"
+          }
+        ]
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -122,17 +124,17 @@ export const COLLATERAL_MANAGER_ABI = [
       {
         name: "borrower",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
     outputs: [
       {
         name: "hasActive",
         type: "bool",
-        internalType: "bool",
-      },
+        internalType: "bool"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -141,17 +143,17 @@ export const COLLATERAL_MANAGER_ABI = [
       {
         name: "borrower",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
     outputs: [
       {
         name: "liquidatable",
         type: "bool",
-        internalType: "bool",
-      },
+        internalType: "bool"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -160,17 +162,17 @@ export const COLLATERAL_MANAGER_ABI = [
       {
         name: "borrower",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
     outputs: [
       {
         name: "isDue",
         type: "bool",
-        internalType: "bool",
-      },
+        internalType: "bool"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -179,11 +181,11 @@ export const COLLATERAL_MANAGER_ABI = [
       {
         name: "borrower",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
     outputs: [],
-    stateMutability: "nonpayable",
+    stateMutability: "nonpayable"
   },
   {
     type: "function",
@@ -193,10 +195,10 @@ export const COLLATERAL_MANAGER_ABI = [
       {
         name: "",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -205,32 +207,32 @@ export const COLLATERAL_MANAGER_ABI = [
       {
         name: "",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
     outputs: [
       {
         name: "marginAmount",
         type: "uint256",
-        internalType: "uint256",
+        internalType: "uint256"
       },
       {
         name: "loanAmount",
         type: "uint256",
-        internalType: "uint256",
+        internalType: "uint256"
       },
       {
         name: "startTime",
         type: "uint32",
-        internalType: "uint32",
+        internalType: "uint32"
       },
       {
         name: "isActive",
         type: "bool",
-        internalType: "bool",
-      },
+        internalType: "bool"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -239,11 +241,11 @@ export const COLLATERAL_MANAGER_ABI = [
       {
         name: "borrower",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
     outputs: [],
-    stateMutability: "nonpayable",
+    stateMutability: "nonpayable"
   },
   {
     type: "function",
@@ -252,11 +254,11 @@ export const COLLATERAL_MANAGER_ABI = [
       {
         name: "_loanManager",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
     outputs: [],
-    stateMutability: "nonpayable",
+    stateMutability: "nonpayable"
   },
   {
     type: "function",
@@ -265,22 +267,22 @@ export const COLLATERAL_MANAGER_ABI = [
       {
         name: "marginAmount",
         type: "uint256",
-        internalType: "uint256",
+        internalType: "uint256"
       },
       {
         name: "loanAmount",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
     outputs: [
       {
         name: "isValid",
         type: "bool",
-        internalType: "bool",
-      },
+        internalType: "bool"
+      }
     ],
-    stateMutability: "pure",
+    stateMutability: "pure"
   },
   {
     type: "event",
@@ -290,10 +292,10 @@ export const COLLATERAL_MANAGER_ABI = [
         name: "borrower",
         type: "address",
         indexed: true,
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
-    anonymous: false,
+    anonymous: false
   },
   {
     type: "event",
@@ -303,22 +305,22 @@ export const COLLATERAL_MANAGER_ABI = [
         name: "borrower",
         type: "address",
         indexed: true,
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "margin",
         type: "uint256",
         indexed: false,
-        internalType: "uint256",
+        internalType: "uint256"
       },
       {
         name: "loan",
         type: "uint256",
         indexed: false,
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
-    anonymous: false,
+    anonymous: false
   },
   {
     type: "event",
@@ -328,17 +330,16 @@ export const COLLATERAL_MANAGER_ABI = [
         name: "borrower",
         type: "address",
         indexed: true,
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
-    anonymous: false,
+    anonymous: false
   },
   {
     type: "error",
     name: "ReentrancyGuardReentrantCall",
-    inputs: [],
-  },
+    inputs: []
+  }
 ] as const;
 
-export const COLLATERAL_MANAGER_ADDRESS =
-  "0x6E37b89B5FA2d85A360B368c42f40AB6Aa7Eb884";
+export const COLLATERAL_MANAGER_ADDRESS = "0x3F40392D650ff67D44E7efFb46bF9BED5b3741d4";

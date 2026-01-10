@@ -1,87 +1,25 @@
-// Auto-generated ABI for LendingPool
-// Generated at: 2026-01-10T04:05:28.029Z
-// Source: LendingPool.sol/LendingPool.json
+// Auto-generated ABI for Pool
+// Generated at: 2026-01-10T04:05:28.035Z
+// Source: Pool.sol/Pool.json
 
-export const LENDING_POOL_ABI = [
+export const VELODROME_POOL_ABI = [
   {
     type: "constructor",
-    inputs: [
-      {
-        name: "_usdcToken",
-        type: "address",
-        internalType: "address"
-      },
-      {
-        name: "_loanManager",
-        type: "address",
-        internalType: "address"
-      }
-    ],
+    inputs: [],
     stateMutability: "nonpayable"
   },
   {
     type: "function",
-    name: "BASIS_POINTS",
+    name: "DOMAIN_SEPARATOR",
     inputs: [],
     outputs: [
       {
         name: "",
-        type: "uint256",
-        internalType: "uint256"
+        type: "bytes32",
+        internalType: "bytes32"
       }
     ],
     stateMutability: "view"
-  },
-  {
-    type: "function",
-    name: "FIXED_APY",
-    inputs: [],
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ],
-    stateMutability: "view"
-  },
-  {
-    type: "function",
-    name: "SECONDS_PER_YEAR",
-    inputs: [],
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ],
-    stateMutability: "view"
-  },
-  {
-    type: "function",
-    name: "accrueYield",
-    inputs: [],
-    outputs: [],
-    stateMutability: "nonpayable"
-  },
-  {
-    type: "function",
-    name: "allocateFunds",
-    inputs: [
-      {
-        name: "recipient",
-        type: "address",
-        internalType: "address"
-      },
-      {
-        name: "amount",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ],
-    outputs: [],
-    stateMutability: "nonpayable"
   },
   {
     type: "function",
@@ -133,19 +71,6 @@ export const LENDING_POOL_ABI = [
   },
   {
     type: "function",
-    name: "asset",
-    inputs: [],
-    outputs: [
-      {
-        name: "",
-        type: "address",
-        internalType: "address"
-      }
-    ],
-    stateMutability: "view"
-  },
-  {
-    type: "function",
     name: "balanceOf",
     inputs: [
       {
@@ -165,31 +90,67 @@ export const LENDING_POOL_ABI = [
   },
   {
     type: "function",
-    name: "canFundLoan",
-    inputs: [
-      {
-        name: "amount",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ],
+    name: "blockTimestampLast",
+    inputs: [],
     outputs: [
       {
-        name: "sufficient",
-        type: "bool",
-        internalType: "bool"
+        name: "",
+        type: "uint256",
+        internalType: "uint256"
       }
     ],
     stateMutability: "view"
   },
   {
     type: "function",
-    name: "convertToAssets",
+    name: "burn",
     inputs: [
       {
-        name: "shares",
+        name: "to",
+        type: "address",
+        internalType: "address"
+      }
+    ],
+    outputs: [
+      {
+        name: "amount0",
         type: "uint256",
         internalType: "uint256"
+      },
+      {
+        name: "amount1",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    stateMutability: "nonpayable"
+  },
+  {
+    type: "function",
+    name: "claimFees",
+    inputs: [],
+    outputs: [
+      {
+        name: "claimed0",
+        type: "uint256",
+        internalType: "uint256"
+      },
+      {
+        name: "claimed1",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    stateMutability: "nonpayable"
+  },
+  {
+    type: "function",
+    name: "claimable0",
+    inputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address"
       }
     ],
     outputs: [
@@ -203,17 +164,40 @@ export const LENDING_POOL_ABI = [
   },
   {
     type: "function",
-    name: "convertToShares",
+    name: "claimable1",
     inputs: [
       {
-        name: "assets",
-        type: "uint256",
-        internalType: "uint256"
+        name: "",
+        type: "address",
+        internalType: "address"
       }
     ],
     outputs: [
       {
         name: "",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "currentCumulativePrices",
+    inputs: [],
+    outputs: [
+      {
+        name: "reserve0Cumulative",
+        type: "uint256",
+        internalType: "uint256"
+      },
+      {
+        name: "reserve1Cumulative",
+        type: "uint256",
+        internalType: "uint256"
+      },
+      {
+        name: "blockTimestamp",
         type: "uint256",
         internalType: "uint256"
       }
@@ -235,222 +219,225 @@ export const LENDING_POOL_ABI = [
   },
   {
     type: "function",
-    name: "deposit",
-    inputs: [
+    name: "eip712Domain",
+    inputs: [],
+    outputs: [
       {
-        name: "assets",
+        name: "fields",
+        type: "bytes1",
+        internalType: "bytes1"
+      },
+      {
+        name: "name",
+        type: "string",
+        internalType: "string"
+      },
+      {
+        name: "version",
+        type: "string",
+        internalType: "string"
+      },
+      {
+        name: "chainId",
         type: "uint256",
         internalType: "uint256"
       },
       {
-        name: "receiver",
+        name: "verifyingContract",
+        type: "address",
+        internalType: "address"
+      },
+      {
+        name: "salt",
+        type: "bytes32",
+        internalType: "bytes32"
+      },
+      {
+        name: "extensions",
+        type: "uint256[]",
+        internalType: "uint256[]"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "factory",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "getAmountOut",
+    inputs: [
+      {
+        name: "amountIn",
+        type: "uint256",
+        internalType: "uint256"
+      },
+      {
+        name: "tokenIn",
         type: "address",
         internalType: "address"
       }
     ],
     outputs: [
       {
-        name: "shares",
+        name: "",
         type: "uint256",
         internalType: "uint256"
       }
     ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "getReserves",
+    inputs: [],
+    outputs: [
+      {
+        name: "_reserve0",
+        type: "uint256",
+        internalType: "uint256"
+      },
+      {
+        name: "_reserve1",
+        type: "uint256",
+        internalType: "uint256"
+      },
+      {
+        name: "_blockTimestampLast",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "index0",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "index1",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "initialize",
+    inputs: [
+      {
+        name: "_token0",
+        type: "address",
+        internalType: "address"
+      },
+      {
+        name: "_token1",
+        type: "address",
+        internalType: "address"
+      },
+      {
+        name: "_stable",
+        type: "bool",
+        internalType: "bool"
+      }
+    ],
+    outputs: [],
     stateMutability: "nonpayable"
   },
   {
     type: "function",
-    name: "getAvailableLiquidity",
+    name: "lastObservation",
     inputs: [],
     outputs: [
       {
-        name: "available",
-        type: "uint256",
-        internalType: "uint256"
+        name: "",
+        type: "tuple",
+        internalType: "struct IPool.Observation",
+        components: [
+          {
+            name: "timestamp",
+            type: "uint256",
+            internalType: "uint256"
+          },
+          {
+            name: "reserve0Cumulative",
+            type: "uint256",
+            internalType: "uint256"
+          },
+          {
+            name: "reserve1Cumulative",
+            type: "uint256",
+            internalType: "uint256"
+          }
+        ]
       }
     ],
     stateMutability: "view"
   },
   {
     type: "function",
-    name: "getPendingYield",
+    name: "metadata",
     inputs: [],
     outputs: [
       {
-        name: "pendingYield",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ],
-    stateMutability: "view"
-  },
-  {
-    type: "function",
-    name: "getPoolStats",
-    inputs: [],
-    outputs: [
-      {
-        name: "totalAssetsAmount",
+        name: "dec0",
         type: "uint256",
         internalType: "uint256"
       },
       {
-        name: "totalAllocatedAmount",
+        name: "dec1",
         type: "uint256",
         internalType: "uint256"
       },
       {
-        name: "availableLiquidity",
+        name: "r0",
         type: "uint256",
         internalType: "uint256"
       },
       {
-        name: "totalShares",
+        name: "r1",
         type: "uint256",
         internalType: "uint256"
       },
       {
-        name: "currentAPY",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ],
-    stateMutability: "view"
-  },
-  {
-    type: "function",
-    name: "getUserInfo",
-    inputs: [
-      {
-        name: "user",
-        type: "address",
-        internalType: "address"
-      }
-    ],
-    outputs: [
-      {
-        name: "shares",
-        type: "uint256",
-        internalType: "uint256"
+        name: "st",
+        type: "bool",
+        internalType: "bool"
       },
       {
-        name: "assets",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ],
-    stateMutability: "view"
-  },
-  {
-    type: "function",
-    name: "getYieldBaseBalance",
-    inputs: [],
-    outputs: [
-      {
-        name: "yieldBase",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ],
-    stateMutability: "view"
-  },
-  {
-    type: "function",
-    name: "lastAccrualTime",
-    inputs: [],
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ],
-    stateMutability: "view"
-  },
-  {
-    type: "function",
-    name: "loanManager",
-    inputs: [],
-    outputs: [
-      {
-        name: "",
+        name: "t0",
         type: "address",
         internalType: "address"
-      }
-    ],
-    stateMutability: "view"
-  },
-  {
-    type: "function",
-    name: "maxDeposit",
-    inputs: [
+      },
       {
-        name: "",
+        name: "t1",
         type: "address",
         internalType: "address"
-      }
-    ],
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ],
-    stateMutability: "view"
-  },
-  {
-    type: "function",
-    name: "maxMint",
-    inputs: [
-      {
-        name: "",
-        type: "address",
-        internalType: "address"
-      }
-    ],
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ],
-    stateMutability: "view"
-  },
-  {
-    type: "function",
-    name: "maxRedeem",
-    inputs: [
-      {
-        name: "owner",
-        type: "address",
-        internalType: "address"
-      }
-    ],
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ],
-    stateMutability: "view"
-  },
-  {
-    type: "function",
-    name: "maxWithdraw",
-    inputs: [
-      {
-        name: "owner",
-        type: "address",
-        internalType: "address"
-      }
-    ],
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-        internalType: "uint256"
       }
     ],
     stateMutability: "view"
@@ -460,19 +447,14 @@ export const LENDING_POOL_ABI = [
     name: "mint",
     inputs: [
       {
-        name: "shares",
-        type: "uint256",
-        internalType: "uint256"
-      },
-      {
-        name: "receiver",
+        name: "to",
         type: "address",
         internalType: "address"
       }
     ],
     outputs: [
       {
-        name: "",
+        name: "liquidity",
         type: "uint256",
         internalType: "uint256"
       }
@@ -494,31 +476,12 @@ export const LENDING_POOL_ABI = [
   },
   {
     type: "function",
-    name: "previewDeposit",
+    name: "nonces",
     inputs: [
       {
-        name: "assets",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ],
-    outputs: [
-      {
-        name: "shares",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ],
-    stateMutability: "view"
-  },
-  {
-    type: "function",
-    name: "previewMint",
-    inputs: [
-      {
-        name: "shares",
-        type: "uint256",
-        internalType: "uint256"
+        name: "owner",
+        type: "address",
+        internalType: "address"
       }
     ],
     outputs: [
@@ -532,17 +495,11 @@ export const LENDING_POOL_ABI = [
   },
   {
     type: "function",
-    name: "previewRedeem",
-    inputs: [
-      {
-        name: "shares",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ],
+    name: "observationLength",
+    inputs: [],
     outputs: [
       {
-        name: "assets",
+        name: "",
         type: "uint256",
         internalType: "uint256"
       }
@@ -551,17 +508,27 @@ export const LENDING_POOL_ABI = [
   },
   {
     type: "function",
-    name: "previewWithdraw",
+    name: "observations",
     inputs: [
       {
-        name: "assets",
+        name: "",
         type: "uint256",
         internalType: "uint256"
       }
     ],
     outputs: [
       {
-        name: "shares",
+        name: "timestamp",
+        type: "uint256",
+        internalType: "uint256"
+      },
+      {
+        name: "reserve0Cumulative",
+        type: "uint256",
+        internalType: "uint256"
+      },
+      {
+        name: "reserve1Cumulative",
         type: "uint256",
         internalType: "uint256"
       }
@@ -570,46 +537,55 @@ export const LENDING_POOL_ABI = [
   },
   {
     type: "function",
-    name: "redeem",
-    inputs: [
+    name: "periodSize",
+    inputs: [],
+    outputs: [
       {
-        name: "shares",
+        name: "",
         type: "uint256",
         internalType: "uint256"
-      },
-      {
-        name: "receiver",
-        type: "address",
-        internalType: "address"
-      },
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "permit",
+    inputs: [
       {
         name: "owner",
         type: "address",
         internalType: "address"
-      }
-    ],
-    outputs: [
+      },
       {
-        name: "assets",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ],
-    stateMutability: "nonpayable"
-  },
-  {
-    type: "function",
-    name: "repayFunds",
-    inputs: [
-      {
-        name: "borrower",
+        name: "spender",
         type: "address",
         internalType: "address"
       },
       {
-        name: "amount",
+        name: "value",
         type: "uint256",
         internalType: "uint256"
+      },
+      {
+        name: "deadline",
+        type: "uint256",
+        internalType: "uint256"
+      },
+      {
+        name: "v",
+        type: "uint8",
+        internalType: "uint8"
+      },
+      {
+        name: "r",
+        type: "bytes32",
+        internalType: "bytes32"
+      },
+      {
+        name: "s",
+        type: "bytes32",
+        internalType: "bytes32"
       }
     ],
     outputs: [],
@@ -617,12 +593,274 @@ export const LENDING_POOL_ABI = [
   },
   {
     type: "function",
-    name: "setLoanManager",
-    inputs: [
+    name: "poolFees",
+    inputs: [],
+    outputs: [
       {
-        name: "newLoanManager",
+        name: "",
         type: "address",
         internalType: "address"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "prices",
+    inputs: [
+      {
+        name: "tokenIn",
+        type: "address",
+        internalType: "address"
+      },
+      {
+        name: "amountIn",
+        type: "uint256",
+        internalType: "uint256"
+      },
+      {
+        name: "points",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "uint256[]",
+        internalType: "uint256[]"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "quote",
+    inputs: [
+      {
+        name: "tokenIn",
+        type: "address",
+        internalType: "address"
+      },
+      {
+        name: "amountIn",
+        type: "uint256",
+        internalType: "uint256"
+      },
+      {
+        name: "granularity",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    outputs: [
+      {
+        name: "amountOut",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "reserve0",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "reserve0CumulativeLast",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "reserve1",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "reserve1CumulativeLast",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "sample",
+    inputs: [
+      {
+        name: "tokenIn",
+        type: "address",
+        internalType: "address"
+      },
+      {
+        name: "amountIn",
+        type: "uint256",
+        internalType: "uint256"
+      },
+      {
+        name: "points",
+        type: "uint256",
+        internalType: "uint256"
+      },
+      {
+        name: "window",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "uint256[]",
+        internalType: "uint256[]"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "setName",
+    inputs: [
+      {
+        name: "__name",
+        type: "string",
+        internalType: "string"
+      }
+    ],
+    outputs: [],
+    stateMutability: "nonpayable"
+  },
+  {
+    type: "function",
+    name: "setSymbol",
+    inputs: [
+      {
+        name: "__symbol",
+        type: "string",
+        internalType: "string"
+      }
+    ],
+    outputs: [],
+    stateMutability: "nonpayable"
+  },
+  {
+    type: "function",
+    name: "skim",
+    inputs: [
+      {
+        name: "to",
+        type: "address",
+        internalType: "address"
+      }
+    ],
+    outputs: [],
+    stateMutability: "nonpayable"
+  },
+  {
+    type: "function",
+    name: "stable",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+        internalType: "bool"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "supplyIndex0",
+    inputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address"
+      }
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "supplyIndex1",
+    inputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address"
+      }
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "swap",
+    inputs: [
+      {
+        name: "amount0Out",
+        type: "uint256",
+        internalType: "uint256"
+      },
+      {
+        name: "amount1Out",
+        type: "uint256",
+        internalType: "uint256"
+      },
+      {
+        name: "to",
+        type: "address",
+        internalType: "address"
+      },
+      {
+        name: "data",
+        type: "bytes",
+        internalType: "bytes"
       }
     ],
     outputs: [],
@@ -643,39 +881,51 @@ export const LENDING_POOL_ABI = [
   },
   {
     type: "function",
-    name: "totalAccruedYield",
+    name: "sync",
+    inputs: [],
+    outputs: [],
+    stateMutability: "nonpayable"
+  },
+  {
+    type: "function",
+    name: "token0",
     inputs: [],
     outputs: [
       {
         name: "",
-        type: "uint256",
-        internalType: "uint256"
+        type: "address",
+        internalType: "address"
       }
     ],
     stateMutability: "view"
   },
   {
     type: "function",
-    name: "totalAllocated",
+    name: "token1",
     inputs: [],
     outputs: [
       {
         name: "",
-        type: "uint256",
-        internalType: "uint256"
+        type: "address",
+        internalType: "address"
       }
     ],
     stateMutability: "view"
   },
   {
     type: "function",
-    name: "totalAssets",
+    name: "tokens",
     inputs: [],
     outputs: [
       {
         name: "",
-        type: "uint256",
-        internalType: "uint256"
+        type: "address",
+        internalType: "address"
+      },
+      {
+        name: "",
+        type: "address",
+        internalType: "address"
       }
     ],
     stateMutability: "view"
@@ -747,48 +997,6 @@ export const LENDING_POOL_ABI = [
     stateMutability: "nonpayable"
   },
   {
-    type: "function",
-    name: "withdraw",
-    inputs: [
-      {
-        name: "assets",
-        type: "uint256",
-        internalType: "uint256"
-      },
-      {
-        name: "receiver",
-        type: "address",
-        internalType: "address"
-      },
-      {
-        name: "owner",
-        type: "address",
-        internalType: "address"
-      }
-    ],
-    outputs: [
-      {
-        name: "shares",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ],
-    stateMutability: "nonpayable"
-  },
-  {
-    type: "function",
-    name: "yieldBaseBalance",
-    inputs: [],
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ],
-    stateMutability: "view"
-  },
-  {
     type: "event",
     name: "Approval",
     inputs: [
@@ -815,7 +1023,7 @@ export const LENDING_POOL_ABI = [
   },
   {
     type: "event",
-    name: "Deposit",
+    name: "Burn",
     inputs: [
       {
         name: "sender",
@@ -824,19 +1032,19 @@ export const LENDING_POOL_ABI = [
         internalType: "address"
       },
       {
-        name: "owner",
+        name: "to",
         type: "address",
         indexed: true,
         internalType: "address"
       },
       {
-        name: "assets",
+        name: "amount0",
         type: "uint256",
         indexed: false,
         internalType: "uint256"
       },
       {
-        name: "shares",
+        name: "amount1",
         type: "uint256",
         indexed: false,
         internalType: "uint256"
@@ -846,8 +1054,14 @@ export const LENDING_POOL_ABI = [
   },
   {
     type: "event",
-    name: "FundsAllocated",
+    name: "Claim",
     inputs: [
+      {
+        name: "sender",
+        type: "address",
+        indexed: true,
+        internalType: "address"
+      },
       {
         name: "recipient",
         type: "address",
@@ -855,7 +1069,13 @@ export const LENDING_POOL_ABI = [
         internalType: "address"
       },
       {
-        name: "amount",
+        name: "amount0",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256"
+      },
+      {
+        name: "amount1",
         type: "uint256",
         indexed: false,
         internalType: "uint256"
@@ -865,16 +1085,115 @@ export const LENDING_POOL_ABI = [
   },
   {
     type: "event",
-    name: "FundsRepaid",
+    name: "EIP712DomainChanged",
+    inputs: [],
+    anonymous: false
+  },
+  {
+    type: "event",
+    name: "Fees",
     inputs: [
       {
-        name: "borrower",
+        name: "sender",
         type: "address",
         indexed: true,
         internalType: "address"
       },
       {
-        name: "amount",
+        name: "amount0",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256"
+      },
+      {
+        name: "amount1",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256"
+      }
+    ],
+    anonymous: false
+  },
+  {
+    type: "event",
+    name: "Mint",
+    inputs: [
+      {
+        name: "sender",
+        type: "address",
+        indexed: true,
+        internalType: "address"
+      },
+      {
+        name: "amount0",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256"
+      },
+      {
+        name: "amount1",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256"
+      }
+    ],
+    anonymous: false
+  },
+  {
+    type: "event",
+    name: "Swap",
+    inputs: [
+      {
+        name: "sender",
+        type: "address",
+        indexed: true,
+        internalType: "address"
+      },
+      {
+        name: "to",
+        type: "address",
+        indexed: true,
+        internalType: "address"
+      },
+      {
+        name: "amount0In",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256"
+      },
+      {
+        name: "amount1In",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256"
+      },
+      {
+        name: "amount0Out",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256"
+      },
+      {
+        name: "amount1Out",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256"
+      }
+    ],
+    anonymous: false
+  },
+  {
+    type: "event",
+    name: "Sync",
+    inputs: [
+      {
+        name: "reserve0",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256"
+      },
+      {
+        name: "reserve1",
         type: "uint256",
         indexed: false,
         internalType: "uint256"
@@ -908,60 +1227,41 @@ export const LENDING_POOL_ABI = [
     anonymous: false
   },
   {
-    type: "event",
-    name: "Withdraw",
-    inputs: [
-      {
-        name: "sender",
-        type: "address",
-        indexed: true,
-        internalType: "address"
-      },
-      {
-        name: "receiver",
-        type: "address",
-        indexed: true,
-        internalType: "address"
-      },
-      {
-        name: "owner",
-        type: "address",
-        indexed: true,
-        internalType: "address"
-      },
-      {
-        name: "assets",
-        type: "uint256",
-        indexed: false,
-        internalType: "uint256"
-      },
-      {
-        name: "shares",
-        type: "uint256",
-        indexed: false,
-        internalType: "uint256"
-      }
-    ],
-    anonymous: false
+    type: "error",
+    name: "BelowMinimumK",
+    inputs: []
   },
   {
-    type: "event",
-    name: "YieldAccrued",
+    type: "error",
+    name: "DepositsNotEqual",
+    inputs: []
+  },
+  {
+    type: "error",
+    name: "ECDSAInvalidSignature",
+    inputs: []
+  },
+  {
+    type: "error",
+    name: "ECDSAInvalidSignatureLength",
     inputs: [
       {
-        name: "yieldAmount",
+        name: "length",
         type: "uint256",
-        indexed: false,
-        internalType: "uint256"
-      },
-      {
-        name: "timestamp",
-        type: "uint256",
-        indexed: false,
         internalType: "uint256"
       }
-    ],
-    anonymous: false
+    ]
+  },
+  {
+    type: "error",
+    name: "ECDSAInvalidSignatureS",
+    inputs: [
+      {
+        name: "s",
+        type: "bytes32",
+        internalType: "bytes32"
+      }
+    ]
   },
   {
     type: "error",
@@ -1051,20 +1351,10 @@ export const LENDING_POOL_ABI = [
   },
   {
     type: "error",
-    name: "ERC4626ExceededMaxDeposit",
+    name: "ERC2612ExpiredSignature",
     inputs: [
       {
-        name: "receiver",
-        type: "address",
-        internalType: "address"
-      },
-      {
-        name: "assets",
-        type: "uint256",
-        internalType: "uint256"
-      },
-      {
-        name: "max",
+        name: "deadline",
         type: "uint256",
         internalType: "uint256"
       }
@@ -1072,41 +1362,61 @@ export const LENDING_POOL_ABI = [
   },
   {
     type: "error",
-    name: "ERC4626ExceededMaxMint",
+    name: "ERC2612InvalidSigner",
     inputs: [
       {
-        name: "receiver",
+        name: "signer",
         type: "address",
         internalType: "address"
       },
-      {
-        name: "shares",
-        type: "uint256",
-        internalType: "uint256"
-      },
-      {
-        name: "max",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ]
-  },
-  {
-    type: "error",
-    name: "ERC4626ExceededMaxRedeem",
-    inputs: [
       {
         name: "owner",
         type: "address",
         internalType: "address"
+      }
+    ]
+  },
+  {
+    type: "error",
+    name: "FactoryAlreadySet",
+    inputs: []
+  },
+  {
+    type: "error",
+    name: "InsufficientInputAmount",
+    inputs: []
+  },
+  {
+    type: "error",
+    name: "InsufficientLiquidity",
+    inputs: []
+  },
+  {
+    type: "error",
+    name: "InsufficientLiquidityBurned",
+    inputs: []
+  },
+  {
+    type: "error",
+    name: "InsufficientLiquidityMinted",
+    inputs: []
+  },
+  {
+    type: "error",
+    name: "InsufficientOutputAmount",
+    inputs: []
+  },
+  {
+    type: "error",
+    name: "InvalidAccountNonce",
+    inputs: [
+      {
+        name: "account",
+        type: "address",
+        internalType: "address"
       },
       {
-        name: "shares",
-        type: "uint256",
-        internalType: "uint256"
-      },
-      {
-        name: "max",
+        name: "currentNonce",
         type: "uint256",
         internalType: "uint256"
       }
@@ -1114,24 +1424,33 @@ export const LENDING_POOL_ABI = [
   },
   {
     type: "error",
-    name: "ERC4626ExceededMaxWithdraw",
-    inputs: [
-      {
-        name: "owner",
-        type: "address",
-        internalType: "address"
-      },
-      {
-        name: "assets",
-        type: "uint256",
-        internalType: "uint256"
-      },
-      {
-        name: "max",
-        type: "uint256",
-        internalType: "uint256"
-      }
-    ]
+    name: "InvalidShortString",
+    inputs: []
+  },
+  {
+    type: "error",
+    name: "InvalidTo",
+    inputs: []
+  },
+  {
+    type: "error",
+    name: "IsPaused",
+    inputs: []
+  },
+  {
+    type: "error",
+    name: "K",
+    inputs: []
+  },
+  {
+    type: "error",
+    name: "NotEmergencyCouncil",
+    inputs: []
+  },
+  {
+    type: "error",
+    name: "NotPoolAdmin",
+    inputs: []
   },
   {
     type: "error",
@@ -1148,7 +1467,16 @@ export const LENDING_POOL_ABI = [
         internalType: "address"
       }
     ]
+  },
+  {
+    type: "error",
+    name: "StringTooLong",
+    inputs: [
+      {
+        name: "str",
+        type: "string",
+        internalType: "string"
+      }
+    ]
   }
 ] as const;
-
-export const LENDING_POOL_ADDRESS = "0x69EEeF8dbE8C7761fd426F6Fb967544f78336551";

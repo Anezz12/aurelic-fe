@@ -1,16 +1,33 @@
 // Auto-generated ABI for RestrictedWalletFactory
+// Generated at: 2026-01-10T04:05:28.031Z
+// Source: RestrictedWalletFactory.sol/RestrictedWalletFactory.json
 
 export const RESTRICTED_WALLET_FACTORY_ABI = [
   {
     type: "constructor",
     inputs: [
       {
+        name: "_veloRouter",
+        type: "address",
+        internalType: "address"
+      },
+      {
+        name: "_poolFactory",
+        type: "address",
+        internalType: "address"
+      },
+      {
         name: "_loanManager",
         type: "address",
-        internalType: "address",
+        internalType: "address"
       },
+      {
+        name: "_whitelistedTokens",
+        type: "address[]",
+        internalType: "address[]"
+      }
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "nonpayable"
   },
   {
     type: "function",
@@ -19,17 +36,17 @@ export const RESTRICTED_WALLET_FACTORY_ABI = [
       {
         name: "borrower",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
     outputs: [
       {
         name: "wallet",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "nonpayable"
   },
   {
     type: "function",
@@ -37,12 +54,12 @@ export const RESTRICTED_WALLET_FACTORY_ABI = [
     inputs: [],
     outputs: [
       {
-        name: "allWallets",
+        name: "",
         type: "address[]",
-        internalType: "address[]",
-      },
+        internalType: "address[]"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -51,17 +68,17 @@ export const RESTRICTED_WALLET_FACTORY_ABI = [
       {
         name: "borrower",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
     outputs: [
       {
         name: "wallet",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "nonpayable"
   },
   {
     type: "function",
@@ -70,17 +87,17 @@ export const RESTRICTED_WALLET_FACTORY_ABI = [
       {
         name: "borrower",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
     outputs: [
       {
-        name: "wallet",
+        name: "",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -88,12 +105,25 @@ export const RESTRICTED_WALLET_FACTORY_ABI = [
     inputs: [],
     outputs: [
       {
-        name: "count",
+        name: "",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "getWhitelistedTokens",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "address[]",
+        internalType: "address[]"
+      }
+    ],
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -102,17 +132,17 @@ export const RESTRICTED_WALLET_FACTORY_ABI = [
       {
         name: "borrower",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
     outputs: [
       {
-        name: "exists",
+        name: "",
         type: "bool",
-        internalType: "bool",
-      },
+        internalType: "bool"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -122,23 +152,23 @@ export const RESTRICTED_WALLET_FACTORY_ABI = [
       {
         name: "",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
-    name: "setLoanManager",
-    inputs: [
+    name: "poolFactory",
+    inputs: [],
+    outputs: [
       {
-        name: "_loanManager",
+        name: "",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
-    outputs: [],
-    stateMutability: "nonpayable",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -147,17 +177,30 @@ export const RESTRICTED_WALLET_FACTORY_ABI = [
       {
         name: "",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
     outputs: [
       {
         name: "",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "veloRouter",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address"
+      }
+    ],
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -166,17 +209,17 @@ export const RESTRICTED_WALLET_FACTORY_ABI = [
       {
         name: "",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
     outputs: [
       {
         name: "",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "event",
@@ -186,23 +229,22 @@ export const RESTRICTED_WALLET_FACTORY_ABI = [
         name: "user",
         type: "address",
         indexed: true,
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "wallet",
         type: "address",
         indexed: true,
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
-    anonymous: false,
+    anonymous: false
   },
   {
     type: "error",
     name: "ReentrancyGuardReentrantCall",
-    inputs: [],
-  },
+    inputs: []
+  }
 ] as const;
 
-export const RESTRICTED_WALLET_FACTORY_ADDRESS =
-  "0xd340A31467a2a145cbFEf8008Ce5DA72Df684F84";
+export const RESTRICTED_WALLET_FACTORY_ADDRESS = "0xf5FC52F0954171bF5aF3773CE77716420220E1b2";

@@ -1,4 +1,6 @@
 // Auto-generated ABI for LoanManager
+// Generated at: 2026-01-10T04:05:28.031Z
+// Source: LoanManager.sol/LoanManager.json
 
 export const LOAN_MANAGER_ABI = [
   {
@@ -7,25 +9,25 @@ export const LOAN_MANAGER_ABI = [
       {
         name: "_lendingPool",
         type: "address",
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "_collateralManager",
         type: "address",
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "_walletFactory",
         type: "address",
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "_usdcToken",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "nonpayable"
   },
   {
     type: "function",
@@ -34,42 +36,42 @@ export const LOAN_MANAGER_ABI = [
       {
         name: "",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
     outputs: [
       {
         name: "loanAmount",
         type: "uint256",
-        internalType: "uint256",
+        internalType: "uint256"
       },
       {
         name: "marginAmount",
         type: "uint256",
-        internalType: "uint256",
+        internalType: "uint256"
       },
       {
         name: "poolFunding",
         type: "uint256",
-        internalType: "uint256",
+        internalType: "uint256"
       },
       {
         name: "startTime",
         type: "uint32",
-        internalType: "uint32",
+        internalType: "uint32"
       },
       {
         name: "restrictedWallet",
         type: "address",
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "isActive",
         type: "bool",
-        internalType: "bool",
-      },
+        internalType: "bool"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -78,22 +80,56 @@ export const LOAN_MANAGER_ABI = [
       {
         name: "borrower",
         type: "address",
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "loanAmount",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
     outputs: [
       {
         name: "canCreate",
         type: "bool",
-        internalType: "bool",
-      },
+        internalType: "bool"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "canWithdrawUSDC",
+    inputs: [
+      {
+        name: "borrower",
+        type: "address",
+        internalType: "address"
+      },
+      {
+        name: "withdrawAmount",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    outputs: [
+      {
+        name: "canWithdraw",
+        type: "bool",
+        internalType: "bool"
+      },
+      {
+        name: "currentBalance",
+        type: "uint256",
+        internalType: "uint256"
+      },
+      {
+        name: "minimumRequired",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -103,10 +139,10 @@ export const LOAN_MANAGER_ABI = [
       {
         name: "",
         type: "address",
-        internalType: "contract CollateralManager",
-      },
+        internalType: "contract CollateralManager"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -115,17 +151,17 @@ export const LOAN_MANAGER_ABI = [
       {
         name: "loanAmount",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
     outputs: [
       {
         name: "success",
         type: "bool",
-        internalType: "bool",
-      },
+        internalType: "bool"
+      }
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "nonpayable"
   },
   {
     type: "function",
@@ -134,8 +170,8 @@ export const LOAN_MANAGER_ABI = [
       {
         name: "borrower",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
     outputs: [
       {
@@ -146,37 +182,37 @@ export const LOAN_MANAGER_ABI = [
           {
             name: "loanAmount",
             type: "uint256",
-            internalType: "uint256",
+            internalType: "uint256"
           },
           {
             name: "marginAmount",
             type: "uint256",
-            internalType: "uint256",
+            internalType: "uint256"
           },
           {
             name: "poolFunding",
             type: "uint256",
-            internalType: "uint256",
+            internalType: "uint256"
           },
           {
             name: "startTime",
             type: "uint32",
-            internalType: "uint32",
+            internalType: "uint32"
           },
           {
             name: "restrictedWallet",
             type: "address",
-            internalType: "address",
+            internalType: "address"
           },
           {
             name: "isActive",
             type: "bool",
-            internalType: "bool",
-          },
-        ],
-      },
+            internalType: "bool"
+          }
+        ]
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -186,20 +222,58 @@ export const LOAN_MANAGER_ABI = [
       {
         name: "totalLoansCreated",
         type: "uint256",
-        internalType: "uint256",
+        internalType: "uint256"
       },
       {
         name: "totalLoansRepaid",
         type: "uint256",
-        internalType: "uint256",
+        internalType: "uint256"
       },
       {
         name: "activeLoans",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "getMaxWithdrawableUSDC",
+    inputs: [
+      {
+        name: "borrower",
+        type: "address",
+        internalType: "address"
+      }
+    ],
+    outputs: [
+      {
+        name: "maxWithdrawable",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "getMinimumUSDCRequired",
+    inputs: [
+      {
+        name: "borrower",
+        type: "address",
+        internalType: "address"
+      }
+    ],
+    outputs: [
+      {
+        name: "minRequired",
+        type: "uint256",
+        internalType: "uint256"
+      }
+    ],
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -208,17 +282,17 @@ export const LOAN_MANAGER_ABI = [
       {
         name: "loanAmount",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
     outputs: [
       {
         name: "funding",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
-    stateMutability: "pure",
+    stateMutability: "pure"
   },
   {
     type: "function",
@@ -227,17 +301,17 @@ export const LOAN_MANAGER_ABI = [
       {
         name: "loanAmount",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
     outputs: [
       {
         name: "margin",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
-    stateMutability: "pure",
+    stateMutability: "pure"
   },
   {
     type: "function",
@@ -246,17 +320,17 @@ export const LOAN_MANAGER_ABI = [
       {
         name: "borrower",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
     outputs: [
       {
         name: "hasActive",
         type: "bool",
-        internalType: "bool",
-      },
+        internalType: "bool"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -266,10 +340,10 @@ export const LOAN_MANAGER_ABI = [
       {
         name: "",
         type: "address",
-        internalType: "contract LendingPool",
-      },
+        internalType: "contract LendingPool"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -278,17 +352,17 @@ export const LOAN_MANAGER_ABI = [
       {
         name: "borrower",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
     outputs: [
       {
         name: "success",
         type: "bool",
-        internalType: "bool",
-      },
+        internalType: "bool"
+      }
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "nonpayable"
   },
   {
     type: "function",
@@ -298,10 +372,10 @@ export const LOAN_MANAGER_ABI = [
       {
         name: "success",
         type: "bool",
-        internalType: "bool",
-      },
+        internalType: "bool"
+      }
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "nonpayable"
   },
   {
     type: "function",
@@ -311,10 +385,10 @@ export const LOAN_MANAGER_ABI = [
       {
         name: "",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -324,10 +398,10 @@ export const LOAN_MANAGER_ABI = [
       {
         name: "",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -337,10 +411,10 @@ export const LOAN_MANAGER_ABI = [
       {
         name: "",
         type: "address",
-        internalType: "contract IERC20",
-      },
+        internalType: "contract IERC20"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -350,10 +424,10 @@ export const LOAN_MANAGER_ABI = [
       {
         name: "",
         type: "address",
-        internalType: "contract RestrictedWalletFactory",
-      },
+        internalType: "contract RestrictedWalletFactory"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "event",
@@ -363,34 +437,34 @@ export const LOAN_MANAGER_ABI = [
         name: "borrower",
         type: "address",
         indexed: true,
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "loanAmount",
         type: "uint256",
         indexed: false,
-        internalType: "uint256",
+        internalType: "uint256"
       },
       {
         name: "marginAmount",
         type: "uint256",
         indexed: false,
-        internalType: "uint256",
+        internalType: "uint256"
       },
       {
         name: "poolFunding",
         type: "uint256",
         indexed: false,
-        internalType: "uint256",
+        internalType: "uint256"
       },
       {
         name: "restrictedWallet",
         type: "address",
         indexed: true,
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
-    anonymous: false,
+    anonymous: false
   },
   {
     type: "event",
@@ -400,22 +474,22 @@ export const LOAN_MANAGER_ABI = [
         name: "borrower",
         type: "address",
         indexed: true,
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "liquidator",
         type: "address",
         indexed: true,
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "recoveredAmount",
         type: "uint256",
         indexed: false,
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
-    anonymous: false,
+    anonymous: false
   },
   {
     type: "event",
@@ -425,21 +499,21 @@ export const LOAN_MANAGER_ABI = [
         name: "borrower",
         type: "address",
         indexed: true,
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "returnedAmount",
         type: "uint256",
         indexed: false,
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
-    anonymous: false,
+    anonymous: false
   },
   {
     type: "error",
     name: "ReentrancyGuardReentrantCall",
-    inputs: [],
+    inputs: []
   },
   {
     type: "error",
@@ -448,11 +522,10 @@ export const LOAN_MANAGER_ABI = [
       {
         name: "token",
         type: "address",
-        internalType: "address",
-      },
-    ],
-  },
+        internalType: "address"
+      }
+    ]
+  }
 ] as const;
 
-export const LOAN_MANAGER_ADDRESS =
-  "0x4391da449AaFa306cDBb434B732F8ACC508D5b7E";
+export const LOAN_MANAGER_ADDRESS = "0xac08Eb1978513409BC616E6F3a8FCA36B362d75b";

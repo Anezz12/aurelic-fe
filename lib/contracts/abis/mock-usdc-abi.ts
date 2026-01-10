@@ -1,10 +1,12 @@
 // Auto-generated ABI for MockUSDC
+// Generated at: 2026-01-10T04:05:28.021Z
+// Source: MockUSDC.sol/MockUSDC.json
 
 export const MOCK_USDC_ABI = [
   {
     type: "constructor",
     inputs: [],
-    stateMutability: "nonpayable",
+    stateMutability: "nonpayable"
   },
   {
     type: "function",
@@ -13,22 +15,22 @@ export const MOCK_USDC_ABI = [
       {
         name: "owner",
         type: "address",
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "spender",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
     outputs: [
       {
         name: "",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -37,22 +39,22 @@ export const MOCK_USDC_ABI = [
       {
         name: "spender",
         type: "address",
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "value",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
     outputs: [
       {
         name: "",
         type: "bool",
-        internalType: "bool",
-      },
+        internalType: "bool"
+      }
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "nonpayable"
   },
   {
     type: "function",
@@ -61,17 +63,17 @@ export const MOCK_USDC_ABI = [
       {
         name: "account",
         type: "address",
-        internalType: "address",
-      },
+        internalType: "address"
+      }
     ],
     outputs: [
       {
         name: "",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -80,11 +82,11 @@ export const MOCK_USDC_ABI = [
       {
         name: "amount",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
     outputs: [],
-    stateMutability: "nonpayable",
+    stateMutability: "nonpayable"
   },
   {
     type: "function",
@@ -94,10 +96,10 @@ export const MOCK_USDC_ABI = [
       {
         name: "",
         type: "uint8",
-        internalType: "uint8",
-      },
+        internalType: "uint8"
+      }
     ],
-    stateMutability: "pure",
+    stateMutability: "pure"
   },
   {
     type: "function",
@@ -106,16 +108,16 @@ export const MOCK_USDC_ABI = [
       {
         name: "to",
         type: "address",
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "amount",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
     outputs: [],
-    stateMutability: "nonpayable",
+    stateMutability: "nonpayable"
   },
   {
     type: "function",
@@ -125,10 +127,10 @@ export const MOCK_USDC_ABI = [
       {
         name: "",
         type: "string",
-        internalType: "string",
-      },
+        internalType: "string"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -138,10 +140,10 @@ export const MOCK_USDC_ABI = [
       {
         name: "",
         type: "string",
-        internalType: "string",
-      },
+        internalType: "string"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -151,10 +153,10 @@ export const MOCK_USDC_ABI = [
       {
         name: "",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
-    stateMutability: "view",
+    stateMutability: "view"
   },
   {
     type: "function",
@@ -163,22 +165,22 @@ export const MOCK_USDC_ABI = [
       {
         name: "to",
         type: "address",
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "value",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
     outputs: [
       {
         name: "",
         type: "bool",
-        internalType: "bool",
-      },
+        internalType: "bool"
+      }
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "nonpayable"
   },
   {
     type: "function",
@@ -187,27 +189,27 @@ export const MOCK_USDC_ABI = [
       {
         name: "from",
         type: "address",
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "to",
         type: "address",
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "value",
         type: "uint256",
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
     outputs: [
       {
         name: "",
         type: "bool",
-        internalType: "bool",
-      },
+        internalType: "bool"
+      }
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "nonpayable"
   },
   {
     type: "event",
@@ -217,22 +219,22 @@ export const MOCK_USDC_ABI = [
         name: "owner",
         type: "address",
         indexed: true,
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "spender",
         type: "address",
         indexed: true,
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "value",
         type: "uint256",
         indexed: false,
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
-    anonymous: false,
+    anonymous: false
   },
   {
     type: "event",
@@ -242,22 +244,22 @@ export const MOCK_USDC_ABI = [
         name: "from",
         type: "address",
         indexed: true,
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "to",
         type: "address",
         indexed: true,
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "value",
         type: "uint256",
         indexed: false,
-        internalType: "uint256",
-      },
+        internalType: "uint256"
+      }
     ],
-    anonymous: false,
+    anonymous: false
   },
   {
     type: "error",
@@ -266,19 +268,19 @@ export const MOCK_USDC_ABI = [
       {
         name: "spender",
         type: "address",
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "allowance",
         type: "uint256",
-        internalType: "uint256",
+        internalType: "uint256"
       },
       {
         name: "needed",
         type: "uint256",
-        internalType: "uint256",
-      },
-    ],
+        internalType: "uint256"
+      }
+    ]
   },
   {
     type: "error",
@@ -287,19 +289,19 @@ export const MOCK_USDC_ABI = [
       {
         name: "sender",
         type: "address",
-        internalType: "address",
+        internalType: "address"
       },
       {
         name: "balance",
         type: "uint256",
-        internalType: "uint256",
+        internalType: "uint256"
       },
       {
         name: "needed",
         type: "uint256",
-        internalType: "uint256",
-      },
-    ],
+        internalType: "uint256"
+      }
+    ]
   },
   {
     type: "error",
@@ -308,9 +310,9 @@ export const MOCK_USDC_ABI = [
       {
         name: "approver",
         type: "address",
-        internalType: "address",
-      },
-    ],
+        internalType: "address"
+      }
+    ]
   },
   {
     type: "error",
@@ -319,9 +321,9 @@ export const MOCK_USDC_ABI = [
       {
         name: "receiver",
         type: "address",
-        internalType: "address",
-      },
-    ],
+        internalType: "address"
+      }
+    ]
   },
   {
     type: "error",
@@ -330,9 +332,9 @@ export const MOCK_USDC_ABI = [
       {
         name: "sender",
         type: "address",
-        internalType: "address",
-      },
-    ],
+        internalType: "address"
+      }
+    ]
   },
   {
     type: "error",
@@ -341,10 +343,10 @@ export const MOCK_USDC_ABI = [
       {
         name: "spender",
         type: "address",
-        internalType: "address",
-      },
-    ],
-  },
+        internalType: "address"
+      }
+    ]
+  }
 ] as const;
 
-export const MOCK_USDC_ADDRESS = "0x06c70B293398B0b3CA4d1ff22C9FbAB4A71C0b43";
+export const MOCK_USDC_ADDRESS = "0xD07d789Fa195D00ECA1Fe89685faCdDEA15aEb90";
