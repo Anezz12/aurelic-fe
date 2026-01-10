@@ -2,11 +2,10 @@
 
 import { useState } from "react";
 import { BorrowForm, RepayForm } from "@/components/pool/Loanform";
-import { WithdrawForm } from "@/components/pool/WithdrawForm";
 import { PoolStats } from "@/components/pool/PoolStats";
 import { usePool } from "@/hooks/contracts/usePool";
 import { useWithdraw } from "@/hooks/contracts/useWithdraw";
-import { TransactionButton } from "@/components/ui/TransactionButton";
+import { ActionButton } from "@/components/ui/TransactionButton";
 import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
 
 export const DashboardPage = () => {
@@ -272,7 +271,7 @@ export const DashboardPage = () => {
                         After loan repayment
                       </div>
                     </div>
-                    <TransactionButton
+                    <ActionButton
                       onClick={() =>
                         handleWithdraw(
                           "0x51BE083DB53C0BbD8c8Af1dca4b7A8F7C4b80b2C",
@@ -289,7 +288,7 @@ export const DashboardPage = () => {
                       size="sm"
                       className="w-full">
                       {isWithdrawing ? "Withdrawing..." : "Withdraw All"}
-                    </TransactionButton>
+                    </ActionButton>
                   </div>
                 </div>
               )}
@@ -385,9 +384,7 @@ export const LoansPage = () => (
 
 // Loan Tab Switch Component
 const LoanTabSwitch = () => {
-  const [activeTab, setActiveTab] = useState<"borrow" | "repay" | "withdraw">(
-    "borrow"
-  );
+  const [activeTab, setActiveTab] = useState<"borrow" | "repay">("borrow");
 
   return (
     <>
@@ -403,7 +400,7 @@ const LoanTabSwitch = () => {
           Borrow
         </button>
         <button
-          className={`flex-1 py-4 text-center font-normal text-sm transition-colors ${
+          className={`flex-1 py-4 text-center font-normal text-sm transition-colors rounded-tr-lg ${
             activeTab === "repay"
               ? "text-[#F5C810] border-b border-[#F5C810] bg-[#1E1E1E]"
               : "text-[#A3A3A3] hover:text-white hover:bg-[#1E1E1E]"
@@ -412,25 +409,9 @@ const LoanTabSwitch = () => {
           style={{ fontFamily: "Space Grotesk" }}>
           Repay
         </button>
-        <button
-          className={`flex-1 py-4 text-center font-normal text-sm transition-colors rounded-tr-lg ${
-            activeTab === "withdraw"
-              ? "text-[#F5C810] border-b border-[#F5C810] bg-[#1E1E1E]"
-              : "text-[#A3A3A3] hover:text-white hover:bg-[#1E1E1E]"
-          }`}
-          onClick={() => setActiveTab("withdraw")}
-          style={{ fontFamily: "Space Grotesk" }}>
-          Withdraw
-        </button>
       </div>
       <div className="p-8">
-        {activeTab === "borrow" ? (
-          <BorrowForm />
-        ) : activeTab === "repay" ? (
-          <RepayForm />
-        ) : (
-          <WithdrawForm />
-        )}
+        {activeTab === "borrow" ? <BorrowForm /> : <RepayForm />}
       </div>
     </>
   );

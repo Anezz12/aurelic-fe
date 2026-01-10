@@ -1,6 +1,6 @@
 "use client";
 
-import { getTransactionUrl, getAddressUrl } from "@/lib/contracts/expolorer";
+import { getTransactionUrl, getAddressUrl } from "@/lib/contracts/explorer";
 import { SUPPORTED_CHAINS } from "@/lib/contracts/addresses";
 
 interface ExplorerLinkProps {

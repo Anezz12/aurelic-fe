@@ -4,7 +4,7 @@ import {
   useRepayLoan,
 } from "@/hooks/contracts/useLoan";
 import { formatUSDC, formatRelativeTime } from "@/lib/utils/formatters";
-import { TransactionButton } from "@/components/ui/TransactionButton";
+import { ApproveActionButton, ActionButton } from "@/components/ui/TransactionButton";
 import { StatusCard, StatusItem } from "@/components/ui/StatusCard";
 import { AmountInput } from "@/components/ui/AmountInput";
 import { TransactionNotification } from "@/components/ui/TransactionNotification";
@@ -31,19 +31,6 @@ export const BorrowForm = () => {
   } = useCreateLoan();
 
   const { loanInfo, refetch: refetchLoanInfo } = useUserLoanInfo();
-
-  const statusText = (() => {
-    switch (currentStep) {
-      case "approve":
-        return isApproving ? "Approving USDC..." : "Approve USDC";
-      case "create":
-        return isCreatingLoan ? "Creating Loan..." : "Create Loan";
-      case "success":
-        return "Loan Created Successfully!";
-      default:
-        return needsApproval ? "Approve USDC First" : "Create Loan";
-    }
-  })();
 
   const isButtonDisabled = !isValidAmount || isApproving || isCreatingLoan;
 
@@ -202,19 +189,23 @@ export const BorrowForm = () => {
         )}
 
         {/* Action Button */}
-        <TransactionButton
-          onClick={
-            currentStep === "approve" ||
-            (needsApproval && currentStep === "idle")
-              ? handleApprove
-              : handleCreateLoan
-          }
-          disabled={isButtonDisabled || currentStep === "success"}
-          loading={isApproving || isCreatingLoan}
+        <ApproveActionButton
+          needsApproval={needsApproval}
+          isApproving={isApproving}
+          isApproveSuccess={approvalTx.status === "success"}
+          onApprove={handleApprove}
+          isExecuting={isCreatingLoan}
+          isExecuteSuccess={loanTx.status === "success"}
+          onExecute={handleCreateLoan}
+          approveLabel="Approve USDC"
+          approvingLabel="Approving USDC..."
+          executeLabel="Create Loan"
+          executingLabel="Creating Loan..."
+          successLabel="Loan Created!"
+          disabled={!isValidAmount || currentStep === "success"}
           size="lg"
-          className="w-full">
-          {statusText}
-        </TransactionButton>
+          className="w-full"
+        />
       </div>
     </div>
   );
@@ -353,7 +344,7 @@ export const RepayForm = () => {
         )}
 
         {/* Action Button */}
-        <TransactionButton
+        <ActionButton
           onClick={handleRepay}
           disabled={!activeLoan || isRepaying || currentStep === "success"}
           loading={isRepaying}
@@ -367,7 +358,7 @@ export const RepayForm = () => {
             : activeLoan
             ? "Repay Loan"
             : "No Loan to Repay"}
-        </TransactionButton>
+        </ActionButton>
       </div>
     </div>
   );

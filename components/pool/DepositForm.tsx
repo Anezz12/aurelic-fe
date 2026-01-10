@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo } from "react";
 import { useDeposit } from "@/hooks/contracts/useDeposit";
-import { TransactionButton } from "@/components/ui/TransactionButton";
+import { ApproveActionButton } from "@/components/ui/TransactionButton";
 import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
 import { ErrorDisplay } from "@/components/ui/ErrorDisplay";
 import { formatUSDC } from "@/lib/utils/formatters";
@@ -49,37 +49,10 @@ export const DepositForm = () => {
 
   const showExpectedShares = expectedShares && parseFloat(amount) > 0;
 
-  const isButtonDisabled = useMemo(() => {
-    if (isApproving || isDepositing) return true;
-    if (!isValidAmount) return true;
-    if (needsApproval && !isApproveSuccess) return false;
-    if (needsApproval && isApproveSuccess) return false;
-    return false;
-  }, [
-    isApproving,
-    isDepositing,
-    isValidAmount,
-    needsApproval,
-    isApproveSuccess,
-  ]);
-
   const handleMax = () => {
     if (!hasBalance) return;
     setAmount(formatUSDC(usdcBalance));
   };
-
-  const statusText = useMemo(() => {
-    switch (currentStep) {
-      case "approve":
-        return isApproving ? "Approving USDC..." : "Approve USDC";
-      case "deposit":
-        return isDepositing ? "Depositing..." : "Deposit USDC";
-      case "success":
-        return "Deposit Successful!";
-      default:
-        return needsApproval ? "Approve USDC" : "Deposit USDC";
-    }
-  }, [currentStep, isApproving, isDepositing, needsApproval]);
 
   return (
     <div className="bg-[#0A0A0A] rounded-lg p-8 border border-[rgba(245,200,16,0.15)]">
@@ -178,11 +151,13 @@ export const DepositForm = () => {
           <div className="bg-dark-gray rounded-lg p-4 flex items-center space-x-3">
             <LoadingSpinner size="sm" />
             <div>
-              <p className="text-sm text-white font-medium">{statusText}</p>
+              <p className="text-sm text-white font-medium">
+                {isApproving ? "Approving USDC..." : "Depositing..."}
+              </p>
               <p className="text-xs text-gray-400">
-                {currentStep === "approve"
-                  ? "Menunggu konfirmasi approval..."
-                  : "Menunggu konfirmasi deposit..."}
+                {isApproving
+                  ? "Waiting for approval..."
+                  : "Waiting for deposit..."}
               </p>
             </div>
           </div>
@@ -191,28 +166,32 @@ export const DepositForm = () => {
         {/* Success Message */}
         {currentStep === "deposit" && isApproveSuccess && !isApproving && (
           <SuccessBox
-            message="✅ Approval successful!"
+            message="Approval successful!"
             subtext="Click Deposit to continue."
           />
         )}
         {currentStep === "success" && isDepositSuccess && !isDepositing && (
-          <SuccessBox message="✅ Deposit successful! Your funds are now earning yield." />
+          <SuccessBox message="Deposit successful! Your funds are now earning yield." />
         )}
 
         {/* Action Button */}
-        <TransactionButton
-          onClick={
-            currentStep === "approve" ||
-            (needsApproval && currentStep === "idle")
-              ? handleApprove
-              : handleDeposit
-          }
-          disabled={isButtonDisabled || currentStep === "success"}
-          loading={isApproving || isDepositing}
+        <ApproveActionButton
+          needsApproval={needsApproval}
+          isApproving={isApproving}
+          isApproveSuccess={isApproveSuccess}
+          onApprove={handleApprove}
+          isExecuting={isDepositing}
+          isExecuteSuccess={isDepositSuccess}
+          onExecute={handleDeposit}
+          approveLabel="Approve USDC"
+          approvingLabel="Approving USDC..."
+          executeLabel="Deposit USDC"
+          executingLabel="Depositing..."
+          successLabel="Deposit Successful!"
+          disabled={!isValidAmount}
           size="lg"
-          className="w-full">
-          {statusText}
-        </TransactionButton>
+          className="w-full"
+        />
 
         {/* Info */}
         <div

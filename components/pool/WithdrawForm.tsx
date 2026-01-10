@@ -1,29 +1,40 @@
-import { useWithdraw } from "@/hooks/contracts/useWithdraw";
+"use client";
+
+import { usePoolWithdraw } from "@/hooks/contracts/usePoolWithdraw";
 import { parseUSDC } from "@/lib/utils/formatters";
-import { TransactionButton } from "@/components/ui/TransactionButton";
+import { ActionButton } from "@/components/ui/TransactionButton";
 import { StatusCard, StatusItem } from "@/components/ui/StatusCard";
 import { AmountInput } from "@/components/ui/AmountInput";
 import { TransactionNotification } from "@/components/ui/TransactionNotification";
 import { useState } from "react";
 
+/**
+ * Withdraw Form for Lenders
+ * Allows users to redeem their pool shares for USDC from the LendingPool
+ */
 export const WithdrawForm = () => {
   const {
     handleWithdraw,
-    withdrawTx,
     currentStep,
     isWithdrawing,
-    canWithdraw,
-    tokenBalance,
+    isWithdrawSuccess,
+    isWithdrawError,
+    hasShares,
+    userShares,
+    userAssets,
+    availableLiquidity,
     resetTransactionState,
-  } = useWithdraw();
+    redeemHash,
+  } = usePoolWithdraw();
 
   const [amount, setAmount] = useState<string>("");
   const [validationError, setValidationError] = useState<string>("");
+  const [txError, setTxError] = useState<string>("");
 
   const amountRaw = parseUSDC(amount || "0");
-  const balanceRaw = parseUSDC(tokenBalance || "0");
+  const sharesRaw = parseUSDC(userShares || "0");
 
-  const isValidAmount = amountRaw > BigInt(0) && amountRaw <= balanceRaw;
+  const isValidAmount = amountRaw > BigInt(0) && amountRaw <= sharesRaw;
   const isButtonDisabled =
     !isValidAmount || isWithdrawing || currentStep === "success";
 
@@ -32,19 +43,27 @@ export const WithdrawForm = () => {
     if (validationError) {
       setValidationError("");
     }
+    if (txError) {
+      setTxError("");
+    }
   };
 
   const handleWithdrawClick = async () => {
     if (!isValidAmount) return;
 
     try {
-      await handleWithdraw(
-        "0x98Ca29e25df55BcE438a2F93013fB9790edaf342",
-        amount
-      ); // MockUSDC address
+      setTxError("");
+      await handleWithdraw(amount);
     } catch (err) {
       console.error("Withdraw error:", err);
+      setTxError(err instanceof Error ? err.message : "Withdraw failed");
     }
+  };
+
+  const handleReset = () => {
+    resetTransactionState();
+    setAmount("");
+    setTxError("");
   };
 
   return (
@@ -59,29 +78,34 @@ export const WithdrawForm = () => {
               letterSpacing: "-0.5px",
               lineHeight: "1.2",
             }}>
-            Withdraw Funds
+            Withdraw USDC
           </h3>
           <p
             className="text-sm text-[#A3A3A3] font-normal"
             style={{ fontFamily: "Space Grotesk" }}>
-            Withdraw your profits and remaining funds after loan repayment.
+            Redeem your pool shares for USDC including accrued yield
           </p>
         </div>
 
-        {/* Withdraw Status */}
-        {canWithdraw ? (
+        {/* User Position Info */}
+        {hasShares ? (
           <StatusCard
-            title="Available for Withdrawal"
+            title="Your Pool Position"
             className="border-green-500/20 bg-green-500/5">
             <StatusItem
-              label="Available Balance"
-              value={`${tokenBalance} USDC`}
+              label="Pool Shares"
+              value={`${userShares} Shares`}
               highlight={true}
             />
             <StatusItem
-              label="Status"
-              value="Loan Repaid - Funds Available"
+              label="Asset Value"
+              value={`${userAssets} USDC`}
               highlight={true}
+            />
+            <StatusItem
+              label="Available Liquidity"
+              value={`${availableLiquidity} USDC`}
+              highlight={false}
             />
           </StatusCard>
         ) : (
@@ -93,7 +117,7 @@ export const WithdrawForm = () => {
                 viewBox="0 0 20 20">
                 <path
                   fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z"
                   clipRule="evenodd"
                 />
               </svg>
@@ -104,36 +128,36 @@ export const WithdrawForm = () => {
                 fontFamily: "Space Grotesk",
                 letterSpacing: "-0.5px",
               }}>
-              No Funds Available
+              No Pool Shares
             </h4>
             <p
               className="text-sm text-[#A3A3A3] font-normal"
               style={{ fontFamily: "Space Grotesk" }}>
-              You need to repay your loan first before withdrawing funds.
+              Deposit USDC first to receive pool shares and start earning yield.
             </p>
           </div>
         )}
 
         {/* Amount Input */}
-        {canWithdraw && (
+        {hasShares && (
           <div>
             <label
               className="block text-sm font-normal text-white mb-2"
               style={{ fontFamily: "Space Grotesk" }}>
-              Withdraw Amount
+              Shares to Redeem
             </label>
             <AmountInput
               value={amount}
               onChange={handleAmountChange}
               placeholder="0.00"
-              maxValue={parseUSDC(tokenBalance)}
-              maxLabel="Balance"
+              maxValue={parseUSDC(userShares)}
+              maxLabel="Shares"
               error={validationError}
             />
             <div className="flex justify-between text-xs text-[#A3A3A3] mt-1">
-              <span>Available: {tokenBalance} USDC</span>
+              <span>Your Shares: {userShares}</span>
               <button
-                onClick={() => setAmount(tokenBalance)}
+                onClick={() => setAmount(userShares)}
                 className="text-[#F5C810] hover:text-[#0891B2] transition-colors"
                 style={{ fontFamily: "Space Grotesk" }}>
                 Max
@@ -143,51 +167,59 @@ export const WithdrawForm = () => {
         )}
 
         {/* Transaction Notifications */}
-        {withdrawTx.status === "pending" && (
+        {isWithdrawing && (
           <TransactionNotification
-            hash={withdrawTx.hash}
+            hash={redeemHash}
             status="pending"
-            message="Withdrawing funds..."
+            message="Redeeming shares..."
             autoHide={false}
           />
         )}
 
-        {withdrawTx.status === "success" && (
+        {isWithdrawSuccess && (
           <TransactionNotification
-            hash={withdrawTx.hash}
+            hash={redeemHash}
             status="success"
-            message="Funds withdrawn successfully!"
-            onClose={() => {
-              resetTransactionState();
-              setAmount("");
-            }}
+            message="Withdrawal successful! Your USDC has been returned."
+            onClose={handleReset}
           />
         )}
 
-        {withdrawTx.status === "error" && (
+        {isWithdrawError && (
           <TransactionNotification
             status="error"
-            message={withdrawTx.error || "Withdraw failed"}
-            onClose={resetTransactionState}
+            message={txError || "Withdrawal failed"}
+            onClose={handleReset}
           />
         )}
 
         {/* Action Button */}
-        <TransactionButton
+        <ActionButton
           onClick={handleWithdrawClick}
           disabled={isButtonDisabled}
           loading={isWithdrawing}
           size="lg"
           className="w-full"
-          variant={canWithdraw && isValidAmount ? "primary" : "secondary"}>
+          variant={hasShares && isValidAmount ? "primary" : "secondary"}>
           {currentStep === "withdraw" && isWithdrawing
             ? "Withdrawing..."
             : currentStep === "success"
-            ? "Withdraw Successful!"
-            : canWithdraw
-            ? "Withdraw Funds"
-            : "No Funds Available"}
-        </TransactionButton>
+            ? "Withdrawal Successful!"
+            : hasShares
+            ? "Withdraw USDC"
+            : "No Shares to Withdraw"}
+        </ActionButton>
+
+        {/* Info */}
+        {hasShares && (
+          <div
+            className="text-xs text-[#A3A3A3] space-y-2 font-normal"
+            style={{ fontFamily: "Space Grotesk" }}>
+            <p>• Redeem shares to receive USDC plus accrued yield</p>
+            <p>• Withdrawal subject to available pool liquidity</p>
+            <p>• Your yield is calculated at current share value</p>
+          </div>
+        )}
       </div>
     </div>
   );

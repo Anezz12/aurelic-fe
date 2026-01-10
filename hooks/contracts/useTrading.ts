@@ -9,10 +9,6 @@ import { parseUnits, formatUnits } from "viem";
 import { CONTRACT_CONFIGS } from "@/lib/contracts/addresses";
 import { RESTRICTED_WALLET_ABI } from "@/lib/contracts/abis/restricted-wallet-abi";
 import { TRADING_CONFIG } from "../../lib/trading/constants";
-import {
-  prepareSwapParams,
-  isTokenPairSupported,
-} from "../../lib/trading/v4-utils";
 import type { Token } from "../../lib/trading/constants";
 
 // Type definition for LoanInfo tuple structure
@@ -192,7 +188,7 @@ export const useTradingHooks = () => {
     }
   };
 
-  // Execute swap function
+  // Execute swap function - Velodrome V2 simple interface
   const executeSwap = async (
     tokenIn: Token,
     tokenOut: Token,
@@ -217,38 +213,39 @@ export const useTradingHooks = () => {
       throw new Error("Missing required parameters for swap");
     }
 
-    // Check if token pair is supported
-    if (!isTokenPairSupported(tokenIn, tokenOut)) {
-      throw new Error(
-        `Token pair ${tokenIn.symbol}/${tokenOut.symbol} is not supported`
-      );
-    }
-
     setCurrentStep("swap");
     setError("");
+    
     try {
-      // Prepare swap parameters
-      const swapParams = prepareSwapParams(
-        tokenIn,
-        tokenOut,
-        amount,
-        slippagePercent
-      );
-      if (!swapParams) {
-        throw new Error("Failed to prepare swap parameters");
-      }
+      // Parse amount to wei based on token decimals
+      const amountIn = parseUnits(amount, tokenIn.decimals);
+      
+      // 15 minute deadline
+      const deadline = BigInt(Math.floor(Date.now() / 1000) + 900);
+      
+      // Calculate minimum output with slippage protection
+      // For now using 0 - in production calculate from quote
+      const amountOutMinimum = BigInt(0);
 
-      // Execute swap directly through restricted wallet's swapExactInputSingleV4 function
+      console.log("Executing Velodrome V2 swap:", {
+        tokenIn: tokenIn.address,
+        tokenOut: tokenOut.address,
+        amountIn: amountIn.toString(),
+        amountOutMinimum: amountOutMinimum.toString(),
+        deadline: deadline.toString(),
+      });
+
+      // Execute swap through RestrictedWallet's Velodrome V2 interface
       await writeContract({
         address: restrictedWalletAddress as `0x${string}`,
         abi: RESTRICTED_WALLET_ABI,
-        functionName: "swapExactInputSingleV4",
+        functionName: "swapExactInputSingle",
         args: [
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          swapParams.poolKey as any, // PoolKey struct for wagmi
-          swapParams.amountIn,
-          swapParams.amountOutMinimum,
-          swapParams.deadline,
+          tokenIn.address as `0x${string}`,
+          tokenOut.address as `0x${string}`,
+          amountIn,
+          amountOutMinimum,
+          deadline,
         ],
       });
     } catch (err) {
@@ -258,75 +255,10 @@ export const useTradingHooks = () => {
     }
   };
 
-  // Whitelist tokens function
-  const whitelistTokens = async () => {
-    if (!restrictedWalletAddress || !isConnected) {
-      throw new Error("Missing required parameters for whitelist");
-    }
-
-    setCurrentStep("approve"); // Reuse approve step for whitelist
-    setError("");
-    try {
-      // Get token addresses
-      const usdcAddress = CONTRACT_CONFIGS.MOCK_USDC.address;
-      const ethAddress = CONTRACT_CONFIGS.MOCK_ETH.address;
-      const btcAddress = CONTRACT_CONFIGS.MOCK_BTC.address;
-
-      // Prepare token array for batch whitelist
-      const tokens = [usdcAddress, ethAddress, btcAddress];
-
-      // Call batch whitelist function
-      await writeContract({
-        address: restrictedWalletAddress as `0x${string}`,
-        abi: RESTRICTED_WALLET_ABI,
-        functionName: "addWhitelistedTokensBatch",
-        args: [tokens],
-      });
-    } catch (err) {
-      setCurrentStep("idle");
-      console.error("Whitelist error:", err);
-      throw err;
-    }
-  };
 
   // Get restricted wallet balances for tokens
   // Note: Components should use useRestrictedWalletBalance hook directly
   // with restrictedWalletAddress from this hook
-
-  // Check whitelist status for tokens
-  const { data: usdcWhitelisted } = useReadContract({
-    address: restrictedWalletAddress as `0x${string}`,
-    abi: RESTRICTED_WALLET_ABI,
-    functionName: "isTokenWhitelisted",
-    args: [CONTRACT_CONFIGS.MOCK_USDC.address],
-    query: {
-      enabled: !!restrictedWalletAddress,
-    },
-  });
-
-  const { data: ethWhitelisted } = useReadContract({
-    address: restrictedWalletAddress as `0x${string}`,
-    abi: RESTRICTED_WALLET_ABI,
-    functionName: "isTokenWhitelisted",
-    args: [CONTRACT_CONFIGS.MOCK_ETH.address],
-    query: {
-      enabled: !!restrictedWalletAddress,
-    },
-  });
-
-  const { data: btcWhitelisted } = useReadContract({
-    address: restrictedWalletAddress as `0x${string}`,
-    abi: RESTRICTED_WALLET_ABI,
-    functionName: "isTokenWhitelisted",
-    args: [CONTRACT_CONFIGS.MOCK_BTC.address],
-    query: {
-      enabled: !!restrictedWalletAddress,
-    },
-  });
-
-  // Check if all tokens are whitelisted
-  const allTokensWhitelisted =
-    usdcWhitelisted && ethWhitelisted && btcWhitelisted;
 
   // Check if user can create loan
   const canCreateLoan = (tradeAmount: string) => {
@@ -406,12 +338,30 @@ export const useTradingHooks = () => {
     canCreateLoan,
     isLoadingLoanInfo,
     resetStates,
-
-    // Whitelist functions
-    whitelistTokens,
-    usdcWhitelisted,
-    ethWhitelisted,
-    btcWhitelisted,
-    allTokensWhitelisted,
   };
+};
+
+/**
+ * Hook to get swap quote from RestrictedWallet
+ * Uses Velodrome V2 on-chain quote for accurate pricing
+ */
+export const useSwapQuote = (
+  restrictedWalletAddress: string | null,
+  tokenIn: string,
+  tokenOut: string,
+  amountIn: bigint
+) => {
+  return useReadContract({
+    address: restrictedWalletAddress as `0x${string}`,
+    abi: RESTRICTED_WALLET_ABI,
+    functionName: "getQuote",
+    args: [tokenIn as `0x${string}`, tokenOut as `0x${string}`, amountIn],
+    query: {
+      enabled:
+        !!restrictedWalletAddress &&
+        !!tokenIn &&
+        !!tokenOut &&
+        amountIn > BigInt(0),
+    },
+  });
 };

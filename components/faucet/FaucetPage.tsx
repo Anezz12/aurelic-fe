@@ -1,7 +1,7 @@
 "use client";
 
 import { useFaucet } from "@/hooks/contracts/useFaucet";
-import { TransactionButton } from "@/components/ui/TransactionButton";
+import { ActionButton } from "@/components/ui/TransactionButton";
 import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
 import { formatUSDC } from "@/lib/utils/formatters";
 
@@ -110,7 +110,7 @@ export const FaucetPage = () => {
                 <p
                   className="text-sm text-[#F5C810] font-normal"
                   style={{ fontFamily: "Space Grotesk" }}>
-                  ✅ Successfully minted 1000 USDC! Your balance has been
+                  Successfully minted 1000 USDC! Your balance has been
                   updated.
                 </p>
               </div>
@@ -118,14 +118,14 @@ export const FaucetPage = () => {
 
             {/* Mint Button */}
             <div className="text-center">
-              <TransactionButton
+              <ActionButton
                 onClick={handleMint}
                 disabled={isBusy}
                 loading={isBusy}
                 size="lg"
                 className="px-8">
                 {isBusy ? "Minting..." : "Mint 1000 USDC"}
-              </TransactionButton>
+              </ActionButton>
             </div>
 
             {/* Info */}

@@ -1,15 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import { formatUnits } from "viem";
 import { useRestrictedWallet } from "@/hooks/contracts/useRestrictedWallet";
 import { TransactionNotification } from "@/components/ui/TransactionNotification";
-import { formatUnits } from "viem";
 import { COMMON_TOKENS } from "./tokens";
-import { TokenBalanceCard } from "./TokenBalanceCard";
-import { RestrictedWalletHeader } from "./RestrictedWalletHeader";
-import { RestrictedWalletSummary } from "./RestrictedWalletSummary";
-import { LoanStatsPanel } from "./LoanStatsPanel";
-import { WithdrawalHelp } from "./WithdrawalHelp";
+import { WalletHeader } from "./WalletHeader";
+import { WalletStatCard } from "./WalletStatCard";
+import { TokenListTable, TokenBalance } from "./TokenListTable";
+import { WithdrawModal } from "./WithdrawModal";
 
 export const RestrictedWalletPage: React.FC = () => {
   const {
@@ -17,36 +16,39 @@ export const RestrictedWalletPage: React.FC = () => {
     hasRestrictedWallet,
     loanIsActive,
     withdrawToken,
-    withdrawAllTokens,
     withdrawTx,
     isWithdrawing,
     resetTransactionState,
     useRestrictedWalletBalance,
-    loanStats,
+    maxWithdrawableUSDC
   } = useRestrictedWallet();
 
-  // Calculate total balances for summary
+  const [selectedToken, setSelectedToken] = useState<TokenBalance | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Fetch balances
   const usdcBalance = useRestrictedWalletBalance(COMMON_TOKENS[0].address);
   const ethBalance = useRestrictedWalletBalance(COMMON_TOKENS[1].address);
   const btcBalance = useRestrictedWalletBalance(COMMON_TOKENS[2].address);
 
-  const tokenBalances = [
+  // Prepare token data
+  const tokenBalances: TokenBalance[] = [
     {
-      ...COMMON_TOKENS[0],
+      token: COMMON_TOKENS[0],
       balance: usdcBalance.data || BigInt(0),
       formatted: usdcBalance.data
         ? formatUnits(usdcBalance.data, COMMON_TOKENS[0].decimals)
         : "0",
     },
     {
-      ...COMMON_TOKENS[1],
+      token: COMMON_TOKENS[1],
       balance: ethBalance.data || BigInt(0),
       formatted: ethBalance.data
         ? formatUnits(ethBalance.data, COMMON_TOKENS[1].decimals)
         : "0",
     },
     {
-      ...COMMON_TOKENS[2],
+      token: COMMON_TOKENS[2],
       balance: btcBalance.data || BigInt(0),
       formatted: btcBalance.data
         ? formatUnits(btcBalance.data, COMMON_TOKENS[2].decimals)
@@ -54,131 +56,127 @@ export const RestrictedWalletPage: React.FC = () => {
     },
   ];
 
-  const totalTokensWithBalance = tokenBalances.filter(
-    (t) => t.balance > BigInt(0)
-  ).length;
+  const activeTokenCount = tokenBalances.filter(t => t.balance > BigInt(0)).length;
+  const usdcToken = tokenBalances.find(t => t.token.symbol === "USDC");
+  const currentUSDCBalance = usdcToken?.balance || BigInt(0);
+  
+  let withdrawableUSDC = currentUSDCBalance;
+  if (loanIsActive) {
+      withdrawableUSDC = maxWithdrawableUSDC < currentUSDCBalance ? maxWithdrawableUSDC : currentUSDCBalance;
+  }
 
-  const withdrawLocked = loanIsActive;
+  const handleOpenWithdraw = (token: TokenBalance) => {
+    setSelectedToken(token);
+    setIsModalOpen(true);
+  };
 
-  const handleWithdrawAll = () => {
-    tokenBalances
-      .filter((t) => t.balance > BigInt(0))
-      .forEach((token) => {
-        withdrawAllTokens(token.address);
-      });
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedToken(null);
+  };
+
+  const handleWithdrawSubmit = async (amount: string, decimals: number) => {
+    if (!selectedToken) return;
+    await withdrawToken(selectedToken.token.address, amount, decimals);
+    // Modal closes automatically on success via transaction state if we want, OR simple close here?
+    // User awaits tx hash in hook, but hook handles state. 
+    // Wait, `withdrawToken` is async and returns promise? Yes.
+    // So if it doesn't throw, we can close modal (transaction started).
+    // The notification will handle pending/success/error.
+    // But keeping modal open during pending might be better UX?
+    // Plan: Modal closes immediately after *signing* (transition to pending), notification takes over.
+    // Done in Modal component: `await onWithdraw... onClose()`.
   };
 
   if (!hasRestrictedWallet) {
     return (
-      <div className="max-w-4xl mx-auto space-y-6">
-        <div className="text-center py-12">
-          <div className="mb-6">
-            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#1E1E1E] flex items-center justify-center">
-              <svg
-                className="w-8 h-8 text-[#A3A3A3]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                />
-              </svg>
-            </div>
-            <h2
-              className="text-2xl font-normal text-white mb-2"
-              style={{
-                fontFamily: "Space Grotesk",
-                letterSpacing: "-0.5px",
-              }}>
-              No Restricted Wallet
-            </h2>
-            <p
-              className="text-[#A3A3A3] max-w-md mx-auto font-normal"
-              style={{ fontFamily: "Space Grotesk" }}>
-              You need to create a loan first to get a restricted wallet. Once
-              you have a restricted wallet, you can manage your trading balances
-              here.
-            </p>
-          </div>
-        </div>
+      <div className="max-w-4xl mx-auto py-12 text-center">
+         <h2 className="text-2xl font-normal text-white mb-2" style={{ fontFamily: "Space Grotesk" }}>
+           No Restricted Wallet Found
+         </h2>
+         <p className="text-[#A3A3A3] font-normal" style={{ fontFamily: "Space Grotesk" }}>
+           You must initialize a loan to create a restricted wallet.
+         </p>
       </div>
     );
   }
 
+  // Calculate max withdrawable for the selected token
+  let modalMaxWithdrawable = BigInt(0);
+  if (selectedToken) {
+      modalMaxWithdrawable = selectedToken.balance;
+      // USDC logic
+      if (selectedToken.token.symbol === "USDC" && loanIsActive) {
+          if (maxWithdrawableUSDC < modalMaxWithdrawable) {
+              modalMaxWithdrawable = maxWithdrawableUSDC;
+          }
+      }
+  }
+
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
-      {/* Header */}
-      <RestrictedWalletHeader
-        withdrawLocked={withdrawLocked}
-        loanStats={loanStats}
+    <div className="max-w-6xl mx-auto space-y-8">
+      <WalletHeader 
+        address={restrictedWalletAddress!} 
+        isActive={loanIsActive}
       />
 
-      {/* Wallet Summary */}
-      <RestrictedWalletSummary
-        restrictedWalletAddress={restrictedWalletAddress!}
-        withdrawLocked={withdrawLocked}
-        totalTokensWithBalance={totalTokensWithBalance}
-        totalSupportedTokens={COMMON_TOKENS.length}
-        onWithdrawAll={handleWithdrawAll}
-        isWithdrawing={isWithdrawing}
-      />
-
-      {/* Token Balances and Withdrawal */}
-      <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h2
-            className="text-xl font-normal text-white"
-            style={{
-              fontFamily: "Space Grotesk",
-              letterSpacing: "-0.5px",
-            }}>
-            Token Balances
-          </h2>
-          <div
-            className="text-sm text-[#A3A3A3] font-normal"
-            style={{ fontFamily: "Space Grotesk" }}>
-            All supported tokens
-          </div>
-        </div>
-
-        <div className="grid gap-4">
-          {COMMON_TOKENS.map((token) => (
-            <TokenBalanceCard
-              key={token.address}
-              token={token}
-              onWithdraw={withdrawToken}
-              onWithdrawAll={withdrawAllTokens}
-              isWithdrawing={isWithdrawing}
-              withdrawLocked={withdrawLocked}
-            />
-          ))}
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <WalletStatCard
+            label="Withdrawable USDC"
+            value={`${formatUnits(withdrawableUSDC, COMMON_TOKENS[0].decimals)} USDC`}
+            subValue={loanIsActive ? "Limited by collateral" : "Fully available"}
+        />
+        <WalletStatCard
+            label="Active Assets"
+            value={activeTokenCount.toString()}
+            subValue="Tokens with balance"
+        />
+        <WalletStatCard
+            label="Total Supported"
+            value={COMMON_TOKENS.length}
+            subValue="Tradable tokens"
+        />
       </div>
 
-      {/* Transaction Notifications */}
+      <div className="space-y-4">
+        <h3 className="text-xl font-normal text-white" style={{ fontFamily: "Space Grotesk" }}>
+            Asset Management
+        </h3>
+        <TokenListTable
+            tokens={tokenBalances}
+            onOpenWithdraw={handleOpenWithdraw}
+        />
+      </div>
+
+      {selectedToken && (
+        <WithdrawModal
+            isOpen={isModalOpen}
+            onClose={handleCloseModal}
+            token={selectedToken.token}
+            balance={selectedToken.balance}
+            maxWithdrawable={modalMaxWithdrawable}
+            isWithdrawing={isWithdrawing}
+            onWithdraw={handleWithdrawSubmit}
+            isUSDC={selectedToken.token.symbol === "USDC"}
+            loanIsActive={loanIsActive}
+        />
+      )}
+
+      {/* Notifications */}
       {withdrawTx.status !== "idle" && (
         <TransactionNotification
           status={withdrawTx.status}
           hash={withdrawTx.hash}
           message={
             withdrawTx.status === "success"
-              ? "Withdrawal completed successfully!"
+              ? "Withdrawal successful"
               : withdrawTx.status === "pending"
-              ? "Processing withdrawal..."
+              ? "Withdrawing..."
               : withdrawTx.error || "Withdrawal failed"
           }
           onClose={resetTransactionState}
         />
       )}
-
-      {/* Loan Information */}
-      {loanStats && <LoanStatsPanel loanStats={loanStats} />}
-
-      {/* Help Section */}
-      <WithdrawalHelp loanStats={loanStats} />
     </div>
   );
 };
