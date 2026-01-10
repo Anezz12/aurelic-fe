@@ -12,10 +12,10 @@ export default function Footer() {
       { href: "/app", label: "Launch App" },
     ],
     resources: [
-      { href: "/docs", label: "Documentation" },
-      { href: "/docs/overview", label: "Overview" },
-      { href: "/docs/core-concept", label: "Core Concepts" },
-      { href: "/docs/smart-contracts", label: "Smart Contracts" },
+      { href: "https://aurelic-docs-lisk.vercel.app/", label: "Documentation" },
+      { href: "https://aurelic-docs-lisk.vercel.app/docs/introduction/overview", label: "Overview" },
+      { href: "https://aurelic-docs-lisk.vercel.app/docs/core-concepts/core-principles/how-it-works", label: "Core Concepts" },
+      { href: "https://aurelic-docs-lisk.vercel.app/docs/technical-details/smart-contract-architecture/core-contracts", label: "Smart Contracts" },
     ],
     community: [
       { href: "#", label: "Discord (coming soon)" },

@@ -74,7 +74,7 @@ export const navigationItems: NavigationItem[] = [
     label: "Docs",
     description: "Guide",
     icon: BookOpen,
-    href: "/docs",
+    href: "https://aurelic-docs-lisk.vercel.app/",
   },
 ];
 

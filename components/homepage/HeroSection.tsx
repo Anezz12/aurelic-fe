@@ -172,8 +172,10 @@ export default function HeroSection() {
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
 
-                <Link
-                  href="/docs"
+                <a
+                  href="https://aurelic-docs-lisk.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-3 px-8 py-4 rounded-lg transition-all duration-300 group"
                   style={{
                     background: "transparent",
@@ -192,7 +194,7 @@ export default function HeroSection() {
                   }}>
                   Documentation
                   <BookOpen className="w-5 h-5" />
-                </Link>
+                </a>
               </div>
             </div>
 
