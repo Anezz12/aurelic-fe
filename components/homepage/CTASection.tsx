@@ -46,7 +46,7 @@ export default function CTASection() {
               Launch App
               <ArrowRight className="w-5 h-5" />
             </Link>
-            <a href="https://aurelic-docs.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-secondary btn-lg">
+            <a href="https://aurelic-mantle-docs.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-secondary btn-lg">
               Read Documentation
               <BookOpen className="w-5 h-5" />
             </a>

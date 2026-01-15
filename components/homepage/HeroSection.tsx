@@ -173,7 +173,7 @@ export default function HeroSection() {
                 </Link>
 
                 <a
-                  href="https://aurelic-docs.vercel.app/"
+                  href="https://aurelic-mantle-docs.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 px-8 py-4 rounded-lg transition-all duration-300 group"

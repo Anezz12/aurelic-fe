@@ -23,7 +23,7 @@ export default function Navbar() {
     { href: "#architecture", label: "Architecture" },
     { href: "#features", label: "Features" },
     { href: "#use-cases", label: "Use Cases" },
-    { href: "https://aurelic-docs.vercel.app/", label: "Documentation" },
+    { href: "https://aurelic-mantle-docs.vercel.app/", label: "Documentation" },
   ];
 
   return (
