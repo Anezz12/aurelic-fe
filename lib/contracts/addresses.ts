@@ -81,7 +81,7 @@ export const CONTRACT_CONFIGS = {
   },
 } as const;
 
-// DEX Addresses (moe-core)
+// DEX Addresses (Merchant Moe)
 export const DEX_ADDRESSES = {
   MOE_ROUTER: "0x4806caFACE1C59F598AE3aBb8EAf57aF202D112E" as const,
   MOE_FACTORY: "0x09B9af72Adf53C7C01a5355C401702F66Fa498D8" as const,

@@ -47,7 +47,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-small text-tertiary leading-relaxed mb-8">
-              Shared-risk liquidity infrastructure for on-chain institutions
+              Community-backed prefunding protocol for on-chain institutions
             </p>
             <div className="flex gap-4">
               <a

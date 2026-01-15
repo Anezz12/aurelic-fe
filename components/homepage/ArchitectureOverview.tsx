@@ -59,7 +59,7 @@ export default function ArchitectureOverview() {
       icon: Zap,
       description: "Whitelisted protocol execution",
       components: [
-        "moe-core DEX Integration",
+        "Merchant Moe DEX Integration",
         "Token Whitelist",
         "Swap Execution",
         "Slippage Protection",

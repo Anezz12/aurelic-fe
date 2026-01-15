@@ -30,7 +30,7 @@ export default function CTASection() {
           <h2 className="text-h1 text-primary mb-8">
             Ready to experience
             <br />
-            <span className="text-accent">shared-risk liquidity?</span>
+            <span className="text-accent">prefunded leverage?</span>
           </h2>
 
           {/* Description */}

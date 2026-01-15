@@ -1,6 +1,6 @@
 # Trading Component
 
-This directory contains the trading functionality for the Aurelic DeFi protocol, implementing integration with moe-core DEX for leveraged trading through restricted wallets.
+This directory contains the trading functionality for the Aurelic DeFi protocol, implementing integration with Merchant Moe DEX for leveraged trading through restricted wallets.
 
 ## Overview
 
@@ -58,14 +58,14 @@ Custom hook that manages:
 1. **Connect Wallet**: User connects their wallet to the dApp
 2. **Approve USDC**: Approve USDC spending for margin requirements (20% of position size)
 3. **Create Loan**: Create a leveraged loan through LoanManager contract
-4. **Execute Swap**: Use restricted wallet to swap tokens via moe-core DEX
+4. **Execute Swap**: Use restricted wallet to swap tokens via Merchant Moe DEX
 5. **Monitor Position**: Track gains/losses and manage position
 
 ### Security Features
 
 - **Restricted Wallet**: All trades executed through secure restricted wallet
 - **Whitelisted Tokens**: Only pre-approved tokens can be traded
-- **moe-core Integration**: Trades routed through secure DEX router
+- **Merchant Moe Integration**: Trades routed through secure DEX router
 - **Slippage Protection**: Configurable slippage tolerance (0.1% to 50%)
 
 ## Configuration
@@ -77,7 +77,7 @@ Custom hook that manages:
 - BTC (Mock): `0x6Cb880Ea81691ceF514FE150D1AC5d741Bb8d45d`
 - WMNT: `0xDD1c4A80196C4375B6669D2c50d187b008ba77D4`
 
-### moe-core DEX Integration
+### Merchant Moe DEX Integration
 
 - MoeRouter: `0x4806caFACE1C59F598AE3aBb8EAf57aF202D112E`
 - MoeFactory: `0x09B9af72Adf53C7C01a5355C401702F66Fa498D8`

@@ -188,7 +188,7 @@ export const useTradingHooks = () => {
     }
   };
 
-  // Execute swap function - moe-core DEX interface via RestrictedWallet
+  // Execute swap function - Merchant Moe DEX interface via RestrictedWallet
   const executeSwap = async (
     tokenIn: Token,
     tokenOut: Token,
@@ -227,7 +227,7 @@ export const useTradingHooks = () => {
       // For now using 0 - in production calculate from quote
       const amountOutMinimum = BigInt(0);
 
-      console.log("Executing moe-core swap via RestrictedWallet:", {
+      console.log("Executing Merchant Moe swap via RestrictedWallet:", {
         tokenIn: tokenIn.address,
         tokenOut: tokenOut.address,
         amountIn: amountIn.toString(),
@@ -235,7 +235,7 @@ export const useTradingHooks = () => {
         deadline: deadline.toString(),
       });
 
-      // Execute swap through RestrictedWallet's moe-core interface
+      // Execute swap through RestrictedWallet's Merchant Moe interface
       await writeContract({
         address: restrictedWalletAddress as `0x${string}`,
         abi: RESTRICTED_WALLET_ABI,
@@ -343,7 +343,7 @@ export const useTradingHooks = () => {
 
 /**
  * Hook to get swap quote from RestrictedWallet
- * Uses moe-core on-chain quote for accurate pricing
+ * Uses Merchant Moe on-chain quote for accurate pricing
  */
 export const useSwapQuote = (
   restrictedWalletAddress: string | null,
