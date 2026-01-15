@@ -423,4 +423,5 @@ export const MOCK_ETH_ABI = [
   }
 ] as const;
 
-export const MOCK_ETH_ADDRESS = "0xD86b97A8783c707bc5Db0280f632946488925A4c";
+// Mantle Sepolia address
+export const MOCK_ETH_ADDRESS = "0xfc342707D95764Cfd754817Bac7bECe528E3f9b0";

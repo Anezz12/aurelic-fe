@@ -1,6 +1,6 @@
-// Auto-generated ABI for RestrictedWallet
-// Generated at: 2026-01-10T04:05:28.032Z
-// Source: RestrictedWallet.sol/RestrictedWallet.json
+// ABI for RestrictedWallet - Mantle/moe-core version
+// Updated: 2026-01-15
+// Source: RestrictedWallet.sol (moe-core integration)
 
 export const RESTRICTED_WALLET_ABI = [
   {
@@ -12,12 +12,12 @@ export const RESTRICTED_WALLET_ABI = [
         internalType: "address"
       },
       {
-        name: "_veloRouter",
+        name: "_moeRouter",
         type: "address",
         internalType: "address"
       },
       {
-        name: "_poolFactory",
+        name: "_moeFactory",
         type: "address",
         internalType: "address"
       },
@@ -168,13 +168,26 @@ export const RESTRICTED_WALLET_ABI = [
   },
   {
     type: "function",
-    name: "poolFactory",
+    name: "moeFactory",
     inputs: [],
     outputs: [
       {
         name: "",
         type: "address",
-        internalType: "contract IPoolFactory"
+        internalType: "contract IMoeFactory"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "moeRouter",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "contract IMoeRouter"
       }
     ],
     stateMutability: "view"
@@ -260,19 +273,6 @@ export const RESTRICTED_WALLET_ABI = [
         name: "",
         type: "address",
         internalType: "address"
-      }
-    ],
-    stateMutability: "view"
-  },
-  {
-    type: "function",
-    name: "veloRouter",
-    inputs: [],
-    outputs: [
-      {
-        name: "",
-        type: "address",
-        internalType: "contract IRouter"
       }
     ],
     stateMutability: "view"

@@ -423,4 +423,5 @@ export const MOCK_BTC_ABI = [
   }
 ] as const;
 
-export const MOCK_BTC_ADDRESS = "0xBecDbF1D892BC3FADB6eaa2686dd35072d3C1Ce5";
+// Mantle Sepolia address
+export const MOCK_BTC_ADDRESS = "0x6Cb880Ea81691ceF514FE150D1AC5d741Bb8d45d";

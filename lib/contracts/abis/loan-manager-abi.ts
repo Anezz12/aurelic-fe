@@ -528,4 +528,5 @@ export const LOAN_MANAGER_ABI = [
   }
 ] as const;
 
-export const LOAN_MANAGER_ADDRESS = "0xac08Eb1978513409BC616E6F3a8FCA36B362d75b";
+// Mantle Sepolia address
+export const LOAN_MANAGER_ADDRESS = "0x82ecEA47BC469fC7fd1957c47ed20457E2f9188F";

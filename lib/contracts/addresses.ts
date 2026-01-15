@@ -1,19 +1,23 @@
-// Auto-generated contract configuration
-// Generated on: Mon Jan 6 2026
-// Network: Lisk Sepolia (4202)
+// Contract configuration for Aurelic Protocol
+// Updated: January 15, 2026
+// Network: Mantle Sepolia (5003)
 
 export const NETWORK_CONFIG = {
-  chainId: 4202,
-  name: "Lisk Sepolia",
-  rpcUrl: "https://rpc.sepolia-api.lisk.com",
-  explorerUrl: "https://sepolia-blockscout.lisk.com",
-  blockExplorerUrl: "https://sepolia-blockscout.lisk.com",
+  chainId: 5003,
+  name: "Mantle Sepolia",
+  rpcUrl: "https://rpc.sepolia.mantle.xyz",
+  explorerUrl: "https://sepolia.mantlescan.xyz",
+  blockExplorerUrl: "https://sepolia.mantlescan.xyz",
 } as const;
 
 // Supported chains configuration
 export const SUPPORTED_CHAINS = {
-  LISK_SEPOLIA: 4202,
+  MANTLE_SEPOLIA: 5003,
+  MANTLE_MAINNET: 5000,
 } as const;
+
+// Current active chain
+export const ACTIVE_CHAIN_ID = SUPPORTED_CHAINS.MANTLE_SEPOLIA;
 
 // Import ABI files and their addresses
 import {
@@ -77,3 +81,11 @@ export const CONTRACT_CONFIGS = {
   },
 } as const;
 
+// DEX Addresses (moe-core)
+export const DEX_ADDRESSES = {
+  MOE_ROUTER: "0x4806caFACE1C59F598AE3aBb8EAf57aF202D112E" as const,
+  MOE_FACTORY: "0x09B9af72Adf53C7C01a5355C401702F66Fa498D8" as const,
+} as const;
+
+// Wrapped native token
+export const WMANTLE_ADDRESS = "0xDD1c4A80196C4375B6669D2c50d187b008ba77D4" as const;

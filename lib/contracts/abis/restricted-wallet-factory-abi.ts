@@ -1,18 +1,18 @@
-// Auto-generated ABI for RestrictedWalletFactory
-// Generated at: 2026-01-10T04:05:28.031Z
-// Source: RestrictedWalletFactory.sol/RestrictedWalletFactory.json
+// ABI for RestrictedWalletFactory - Mantle/moe-core version
+// Updated: 2026-01-15
+// Source: RestrictedWalletFactory.sol (moe-core integration)
 
 export const RESTRICTED_WALLET_FACTORY_ABI = [
   {
     type: "constructor",
     inputs: [
       {
-        name: "_veloRouter",
+        name: "_moeRouter",
         type: "address",
         internalType: "address"
       },
       {
-        name: "_poolFactory",
+        name: "_moeFactory",
         type: "address",
         internalType: "address"
       },
@@ -159,7 +159,20 @@ export const RESTRICTED_WALLET_FACTORY_ABI = [
   },
   {
     type: "function",
-    name: "poolFactory",
+    name: "moeFactory",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address"
+      }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "moeRouter",
     inputs: [],
     outputs: [
       {
@@ -180,19 +193,6 @@ export const RESTRICTED_WALLET_FACTORY_ABI = [
         internalType: "address"
       }
     ],
-    outputs: [
-      {
-        name: "",
-        type: "address",
-        internalType: "address"
-      }
-    ],
-    stateMutability: "view"
-  },
-  {
-    type: "function",
-    name: "veloRouter",
-    inputs: [],
     outputs: [
       {
         name: "",
@@ -247,4 +247,5 @@ export const RESTRICTED_WALLET_FACTORY_ABI = [
   }
 ] as const;
 
-export const RESTRICTED_WALLET_FACTORY_ADDRESS = "0xf5FC52F0954171bF5aF3773CE77716420220E1b2";
+// Mantle Sepolia address
+export const RESTRICTED_WALLET_FACTORY_ADDRESS = "0x59669c14d30BeCcd2328215eBcAE770E0dDDF08D";

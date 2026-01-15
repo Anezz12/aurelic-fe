@@ -8,33 +8,56 @@ if (!projectId) {
   console.warn("WALLET_CONNECT_PROJECT_ID not found");
 }
 
-// Define Lisk Sepolia - our primary and only supported chain
-export const liskSepolia = defineChain({
-  id: 4202,
-  name: "Lisk Sepolia",
+// Define Mantle Sepolia - our primary testnet chain
+export const mantleSepolia = defineChain({
+  id: 5003,
+  name: "Mantle Sepolia",
   nativeCurrency: {
     decimals: 18,
-    name: "Ether",
-    symbol: "ETH",
+    name: "Mantle",
+    symbol: "MNT",
   },
   rpcUrls: {
     default: {
-      http: ["https://rpc.sepolia-api.lisk.com"],
+      http: ["https://rpc.sepolia.mantle.xyz"],
     },
   },
   blockExplorers: {
     default: {
-      name: "Lisk Sepolia Blockscout",
-      url: "https://sepolia-blockscout.lisk.com",
+      name: "Mantle Sepolia Explorer",
+      url: "https://sepolia.mantlescan.xyz",
     },
   },
   testnet: true,
 });
 
+// Define Mantle Mainnet - for future production deployment
+export const mantleMainnet = defineChain({
+  id: 5000,
+  name: "Mantle",
+  nativeCurrency: {
+    decimals: 18,
+    name: "Mantle",
+    symbol: "MNT",
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://rpc.mantle.xyz"],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: "Mantle Explorer",
+      url: "https://mantlescan.xyz",
+    },
+  },
+  testnet: false,
+});
+
 export const config = getDefaultConfig({
   appName: "Aurelic",
   projectId: projectId || "aurelic-demo",
-  chains: [liskSepolia],
+  chains: [mantleSepolia],
   ssr: false,
   storage: createStorage({
     storage: typeof window !== "undefined" ? window.localStorage : undefined,

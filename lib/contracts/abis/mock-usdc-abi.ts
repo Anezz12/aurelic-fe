@@ -349,4 +349,5 @@ export const MOCK_USDC_ABI = [
   }
 ] as const;
 
-export const MOCK_USDC_ADDRESS = "0xD07d789Fa195D00ECA1Fe89685faCdDEA15aEb90";
+// Mantle Sepolia address
+export const MOCK_USDC_ADDRESS = "0xF4b37611C4B30a85063EF625356B588F597D41c5";

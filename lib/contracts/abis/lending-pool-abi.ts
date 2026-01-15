@@ -1151,4 +1151,5 @@ export const LENDING_POOL_ABI = [
   }
 ] as const;
 
-export const LENDING_POOL_ADDRESS = "0x69EEeF8dbE8C7761fd426F6Fb967544f78336551";
+// Mantle Sepolia address
+export const LENDING_POOL_ADDRESS = "0xd12b5063e4c5d8fF44C483b18a577e3c0fCeBA09";

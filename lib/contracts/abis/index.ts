@@ -1,5 +1,6 @@
-// Auto-generated index file for ABIs
-// Generated at: 2026-01-10T04:05:28.035Z
+// Aurelic Protocol ABI Exports
+// Updated: 2026-01-15
+// Network: Mantle Sepolia (5003)
 
 // Mock Tokens
 export * from "./mock-usdc-abi";
@@ -13,7 +14,7 @@ export * from "./loan-manager-abi";
 export * from "./restricted-wallet-factory-abi";
 export * from "./restricted-wallet-abi";
 
-// Velodrome AMM
-export * from "./velodrome-router-abi";
-export * from "./velodrome-pool-factory-abi";
-export * from "./velodrome-pool-abi";
+// moe-core DEX (replaces Velodrome)
+export * from "./moe-router-abi";
+export * from "./moe-factory-abi";
+export * from "./moe-pair-abi";
