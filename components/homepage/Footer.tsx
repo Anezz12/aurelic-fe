@@ -12,10 +12,10 @@ export default function Footer() {
       { href: "/app", label: "Launch App" },
     ],
     resources: [
-      { href: "https://aurelic-docs-lisk.vercel.app/", label: "Documentation" },
-      { href: "https://aurelic-docs-lisk.vercel.app/docs/introduction/overview", label: "Overview" },
-      { href: "https://aurelic-docs-lisk.vercel.app/docs/core-concepts/core-principles/how-it-works", label: "Core Concepts" },
-      { href: "https://aurelic-docs-lisk.vercel.app/docs/technical-details/smart-contract-architecture/core-contracts", label: "Smart Contracts" },
+      { href: "https://aurelic-docs.vercel.app/", label: "Documentation" },
+      { href: "https://aurelic-docs.vercel.app/docs/introduction/overview", label: "Overview" },
+      { href: "https://aurelic-docs.vercel.app/docs/core-concepts/core-principles/how-it-works", label: "Core Concepts" },
+      { href: "https://aurelic-docs.vercel.app/docs/technical-details/smart-contract-architecture/core-contracts", label: "Smart Contracts" },
     ],
     community: [
       { href: "#", label: "Discord (coming soon)" },
@@ -153,11 +153,11 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-5 pt-8 border-t border-subtle">
           <p className="text-small text-tertiary">
-            © 2025 Aurelic. Built on Base.
+            © 2026 Aurelic. Built on Mantle.
           </p>
           <div className="flex items-center gap-2 px-4 py-2 bg-tertiary border border-subtle rounded-md text-xs text-secondary">
             <div className="w-4 h-4 bg-accent rounded-sm"></div>
-            <span>Powered by Lisk</span>
+            <span>Powered by Mantle</span>
           </div>
         </div>
       </div>

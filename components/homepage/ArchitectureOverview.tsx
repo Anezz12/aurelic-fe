@@ -59,7 +59,7 @@ export default function ArchitectureOverview() {
       icon: Zap,
       description: "Whitelisted protocol execution",
       components: [
-        "Velodrome Integration",
+        "moe-core DEX Integration",
         "Token Whitelist",
         "Swap Execution",
         "Slippage Protection",
@@ -422,7 +422,7 @@ export default function ArchitectureOverview() {
                   color: "#A3A3A3",
                   fontWeight: "400",
                 }}>
-                Lisk L2 optimized. Minimal gas costs.
+                Mantle L2 optimized. Minimal gas costs.
                 <span style={{ color: "#F5C810" }}>
                   Institutional-grade performance.
                 </span>

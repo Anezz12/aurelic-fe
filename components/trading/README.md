@@ -1,13 +1,13 @@
 # Trading Component
 
-This directory contains the trading functionality for the Aurelic DeFi protocol, implementing integration with Uniswap V3 for leveraged trading through restricted wallets.
+This directory contains the trading functionality for the Aurelic DeFi protocol, implementing integration with moe-core DEX for leveraged trading through restricted wallets.
 
 ## Overview
 
 The trading system allows users to:
 
 - Create leveraged positions (up to 5x) using USDC as collateral
-- Trade various tokens including LSK (Lisk), ETH, WBTC, and UNI
+- Trade various tokens including MNT (Mantle), ETH, and BTC
 - Execute swaps through their restricted wallets with enhanced security
 - Monitor positions and manage slippage tolerance
 
@@ -16,10 +16,11 @@ The trading system allows users to:
 ```
 trading/
 ├── TradingPage.tsx      # Main trading interface component
-├── hooks.ts             # Custom hooks for contract interactions
-├── constants.ts         # Token configurations and trading constants
-├── index.ts            # Export file
-└── README.md           # This file
+├── TradingHeader.tsx    # Trading page header
+├── SwapCard.tsx         # Swap interface component
+├── SwapInput.tsx        # Token input component
+├── SwapSummary.tsx      # Swap summary display
+└── README.md            # This file
 ```
 
 ## Components
@@ -28,13 +29,13 @@ trading/
 
 The main trading interface that provides:
 
-- Token selection interface with LSK support
+- Token selection interface with MNT support
 - Trade amount input with real-time validation
 - Slippage tolerance configuration
 - Loan creation and swap execution
 - Real-time balance and position monitoring
 
-### useTradingHooks
+### useTradingHooks (in hooks/contracts)
 
 Custom hook that manages:
 
@@ -47,39 +48,39 @@ Custom hook that manages:
 
 ### Supported Tokens
 
-- **ETH**: Native Ethereum (18 decimals)
-- **USDC**: USD Coin - Primary collateral (6 decimals)
-- **WBTC**: Wrapped Bitcoin (8 decimals)
-- **LSK**: Lisk token (18 decimals) - _Newly added_
-- **UNI**: Uniswap token (18 decimals)
+- **ETH**: Mock Ethereum (18 decimals)
+- **USDC**: Mock USD Coin - Primary collateral (6 decimals)
+- **BTC**: Mock Bitcoin (8 decimals)
+- **WMNT**: Wrapped Mantle (18 decimals) - Native token
 
 ### Trading Flow
 
 1. **Connect Wallet**: User connects their wallet to the dApp
 2. **Approve USDC**: Approve USDC spending for margin requirements (20% of position size)
 3. **Create Loan**: Create a leveraged loan through LoanManager contract
-4. **Execute Swap**: Use restricted wallet to swap tokens via Uniswap V3
+4. **Execute Swap**: Use restricted wallet to swap tokens via moe-core DEX
 5. **Monitor Position**: Track gains/losses and manage position
 
 ### Security Features
 
 - **Restricted Wallet**: All trades executed through secure restricted wallet
 - **Whitelisted Tokens**: Only pre-approved tokens can be traded
-- **Function Selectors**: Only approved Uniswap functions can be called
+- **moe-core Integration**: Trades routed through secure DEX router
 - **Slippage Protection**: Configurable slippage tolerance (0.1% to 50%)
 
 ## Configuration
 
-### Token Addresses (Lisk Sepolia)
+### Token Addresses (Mantle Sepolia)
 
-- USDC: `0xe61995e2728bd2d2b1abd9e089213b542db7916a` (actual deployed)
-- LSK: `0xac485391EB2d7D88253a7F1eF18C37f4242D1A24` (example - replace with actual)
-- Other tokens: Placeholder addresses (update with actual deployments)
+- USDC: `0xF4b37611C4B30a85063EF625356B588F597D41c5`
+- ETH (Mock): `0xfc342707D95764Cfd754817Bac7bECe528E3f9b0`
+- BTC (Mock): `0x6Cb880Ea81691ceF514FE150D1AC5d741Bb8d45d`
+- WMNT: `0xDD1c4A80196C4375B6669D2c50d187b008ba77D4`
 
-### Uniswap V3 Integration
+### moe-core DEX Integration
 
-- Router: `0xE592427A0AEce92De3Edee1F18E0157C05861564` (example)
-- Fee Tiers: 0.05%, 0.3%, 1.0%
+- MoeRouter: `0x4806caFACE1C59F598AE3aBb8EAf57aF202D112E`
+- MoeFactory: `0x09B9af72Adf53C7C01a5355C401702F66Fa498D8`
 - Default Deadline: 20 minutes
 
 ## Usage Example
@@ -101,25 +102,27 @@ export function App() {
 ### RestrictedWallet Functions Used
 
 - `swapExactInputSingle`: Swap exact input amount for minimum output
-- `swapExactOutputSingle`: Swap for exact output using maximum input
-- `addWhitelistedToken`: Add tokens to trading whitelist
-- `addApprovedTarget`: Add Uniswap router to approved targets
+- `getQuote`: Get swap quote for token pair
+- `getBalance`: Get token balance in restricted wallet
+- `withdraw`: Withdraw tokens from restricted wallet
 
 ### LoanManager Functions Used
 
 - `createLoan`: Create leveraged position
 - `getLoanInfo`: Get user's current loan details
 - `canCreateLoan`: Check if user can create new loan
+- `repayLoan`: Repay and close loan position
 
 ## Error Handling
 
 The component handles various error states:
 
 - Wallet not connected
+- Wrong network (must be Mantle Sepolia)
 - Insufficient USDC balance
 - Active loan already exists
 - Transaction failures
-- Network issues
+- Pool does not exist errors
 
 ## Future Enhancements
 
@@ -133,7 +136,7 @@ The component handles various error states:
 
 This is a PoC (Proof of Concept) implementation focused on demonstrating the core functionality. For production use, consider:
 
-- Real token address deployments on Lisk
+- Real token address deployments on Mantle Mainnet
 - Enhanced error handling and user feedback
 - Gas optimization
 - Comprehensive testing

@@ -30,7 +30,7 @@ export const FaucetPage = () => {
               lineHeight: "1.6",
             }}>
             Get test USDC tokens for the Aurelic protocol. This faucet allows
-            you to mint 1000 USDC tokens for testing purposes on Lisk Sepolia
+            you to mint 1000 USDC tokens for testing purposes on Mantle Sepolia
             testnet.
           </p>
         </div>
@@ -140,7 +140,7 @@ export const FaucetPage = () => {
                 style={{ fontFamily: "Space Grotesk" }}>
                 <p>• Mint 1000 USDC tokens per transaction</p>
                 <p>• Tokens are for testing purposes only</p>
-                <p>• No real value - Lisk Sepolia testnet</p>
+                <p>• No real value - Mantle Sepolia testnet</p>
                 <p>• Use these tokens to test deposits and withdrawals</p>
               </div>
             </div>
@@ -152,7 +152,7 @@ export const FaucetPage = () => {
           <p
             className="text-sm text-[#A3A3A3] font-normal"
             style={{ fontFamily: "Space Grotesk" }}>
-            <span className="text-[#F5C810] font-normal">Network:</span> Lisk
+            <span className="text-[#F5C810] font-normal">Network:</span> Mantle
             Sepolia Testnet
           </p>
           <p

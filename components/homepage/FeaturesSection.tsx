@@ -41,9 +41,9 @@ export default function FeaturesSection() {
     },
     {
       icon: Activity,
-      title: "Built on Lisk",
+      title: "Built on Mantle",
       description:
-        "Lisk L2. Institutional infrastructure. Low fees. Fast finality. Production ready.",
+        "Mantle L2. Institutional infrastructure. Low fees. Fast finality. Production ready.",
       highlight: "SCALABLE",
     },
     {

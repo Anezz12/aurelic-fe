@@ -1,5 +1,6 @@
-// Trading constants and token configurations for Lisk Sepolia network
-import { CONTRACT_CONFIGS } from "@/lib/contracts/addresses";
+// Trading constants and token configurations for Mantle Sepolia network
+// Updated: 2026-01-15
+import { CONTRACT_CONFIGS, WMANTLE_ADDRESS } from "@/lib/contracts/addresses";
 
 export interface Token {
   symbol: string;
@@ -11,8 +12,8 @@ export interface Token {
   isNative?: boolean;
 }
 
-// Lisk Sepolia Token Addresses (imported from contracts.ts)
-// Only deployed tokens: Mock USDC, Mock ETH, Mock BTC
+// Mantle Sepolia Token Addresses (imported from contracts)
+// Deployed tokens: Mock USDC, Mock ETH, Mock BTC, WMNT
 export const TOKENS: Record<string, Token> = {
   USDC: {
     symbol: "USDC",
@@ -35,7 +36,23 @@ export const TOKENS: Record<string, Token> = {
     decimals: 8,
     price: "111,210.45",
   },
+  WMNT: {
+    symbol: "WMNT",
+    name: "Wrapped Mantle",
+    address: WMANTLE_ADDRESS,
+    decimals: 18,
+    price: "0.75",
+    isNative: true,
+  },
 };
+
+// Token list for dropdowns (ordered by importance)
+export const TOKEN_LIST: Token[] = [
+  TOKENS.USDC,
+  TOKENS.ETH,
+  TOKENS.BTC,
+  TOKENS.WMNT,
+];
 
 // Default slippage options
 export const SLIPPAGE_OPTIONS = ["0.1", "0.5", "1.0", "2.0"];
@@ -62,3 +79,9 @@ export type TradeType = "buy" | "sell";
 
 // Swap types
 export type SwapType = "exactInput" | "exactOutput";
+
+// Native token symbol for Mantle
+export const NATIVE_TOKEN_SYMBOL = "MNT";
+
+// Network display name
+export const NETWORK_DISPLAY_NAME = "Mantle Sepolia";
